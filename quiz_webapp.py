@@ -223,21 +223,11 @@ if 'subject_chosen' not in st.session_state:
     st.session_state.quiz_started = False
 
 # --- Screen 1: Subject Selection & Load ---
-if not st.session_state.subject_chosen:
-    # Start new quiz section
-    st.header("Start a New Quiz")
-    chosen_subject = st.radio("Select a subject to start the quiz:", SUBJECT_FILES.keys())
-    if st.button("Select Subject"):
-        st.session_state.session_id = None
-        
-        st.session_state.selected_subject = chosen_subject
-        st.session_state.subject_chosen = True
-        st.rerun()
+if not st.session_state.subject_chosen:    
+    # --- Resume Autosave Section --- #
     # Call the component to trigger retrieval from the browser's local storage.
-    retrieved_session_id = localS.getItem('session_id')
-
     # Only show the "Resume" section if a valid session ID was actually found.
-    if retrieved_session_id:
+    if st.session_state.session_id:
         st.subheader("Resume Your Last Session?")
         st.write("Click this button to resume your last session.")
         if st.button("Yes, Resume My Last Autosaved Quiz"):
@@ -253,18 +243,26 @@ if not st.session_state.subject_chosen:
                 time.sleep(1)
                 st.rerun()
     # Resume from code section
-    st.subheader("Resume a Saved Quiz with a Code")
-    resume_code = st.text_input("Enter your save code:", placeholder="e.g. CUTE-CAT-42")
-    if st.button("Load Quiz"):
-        if resume_code:
-            if restore_session_from_code(resume_code):
-                st.success("Quiz loaded successfully! Resuming...")
-                time.sleep(1)
-                st.rerun()
+    st.header("Start a New Quiz")
+    chosen_subject = st.radio("Select a subject to start the quiz:", SUBJECT_FILES.keys())
+    if st.button("Select Subject"):
+        st.session_state.session_id = None
+        
+        st.session_state.selected_subject = chosen_subject
+        st.session_state.subject_chosen = True
+        st.rerun()
+    with st.expander("Resume a Saved Quiz with a Code"):
+        resume_code = st.text_input("Enter your save code:", placeholder="e.g. CUTE-CAT-42")
+        if st.button("Load Quiz"):
+            if resume_code:
+                if restore_session_from_code(resume_code):
+                    st.success("Quiz loaded successfully! Resuming...")
+                    time.sleep(1)
+                    st.rerun()
+                else:
+                    st.error("Invalid save code. Please try again.")
             else:
-                st.error("Invalid save code. Please try again.")
-        else:
-            st.warning("Please enter a save code.")
+                st.warning("Please enter a save code.")
     
     st.divider()
 
@@ -413,6 +411,8 @@ elif st.session_state.quiz_started:
             if st.button("Play Again", use_container_width=True):
                 for key in st.session_state.keys():
                     del st.session_state[key]
+                st.session_state.session_id = None
+                retrieved_session_id = False
                 st.rerun()
         with col2:
             st.download_button(
