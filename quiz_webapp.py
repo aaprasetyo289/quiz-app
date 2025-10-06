@@ -26,13 +26,21 @@ def generate_save_code():
     return f"{random.choice(words)}-{random.choice(words)}-{random.randint(10, 99)}"
 
 def save_state(code, session_state):
-    """Saves the current session state to Firestore."""
-    # Convert the Streamlit session state object to a plain dictionary
-    state_dict = dict(session_state.items())
-    # Save the dictionary to Firestore
-    doc_ref = db.collection("quiz_sessions").document(code)
-    doc_ref.set(state_dict)
+    """Saves the essential quiz state to Firestore, filtering out widget keys."""
+    # Define the specific keys that represent the core state of the quiz.
+    keys_to_save = [
+        'subject_chosen', 'quiz_started', 'selected_subject',
+        'questions', 'current_question_index', 'score', 'auto_next',
+        'answer_submitted', 'last_choice', 'scored'
+    ]
+    
+    # Create a new, clean dictionary containing only the keys we want to persist.
+    state_to_save = {key: session_state[key] for key in keys_to_save if key in session_state}
 
+    # Save the cleaned dictionary to Firestore.
+    doc_ref = db.collection("quiz_sessions").document(code)
+    doc_ref.set(state_to_save)
+    
 def load_state(code):
     """Loads a session state from Firestore."""
     doc_ref = db.collection("quiz_sessions").document(code)
@@ -42,10 +50,34 @@ def load_state(code):
     else:
         return None
 
+def submit_general_feedback(feedback_text):
+    """Saves general feedback to the 'general_feedback' collection."""
+    if feedback_text: # Ensure feedback is not empty
+        doc_ref = db.collection("general_feedback").document()
+        doc_ref.set({
+            "feedback": feedback_text,
+            "timestamp": firestore.SERVER_TIMESTAMP
+        })
+        return True
+    return False
+
+def submit_question_report(subject, question, report_text):
+    """Saves a report about a specific question."""
+    if report_text: # Ensure report is not empty
+        doc_ref = db.collection("question_reports").document()
+        doc_ref.set({
+            "subject": subject,
+            "question_text": question,
+            "report": report_text,
+            "timestamp": firestore.SERVER_TIMESTAMP
+        })
+        return True
+    return False
+
 # --- DICTIONARIES AND CONSTANTS (no changes) ---
 SUBJECT_FILES = {
     "Mankeb (Manajemen dan Keberlanjutan)": "multichoice-uts-mankeb.csv",
-    "Pastra (Pemasaran Strategik) !!!BELUM BISA!!!": "multichoice-uts-pastra.csv"
+    "Pastra (Pemasaran Strategik)": "multichoice-uts-pastra.csv"
 }
 GITHUB_BASE_URL = "https://github.com/aaprasetyo289/quiz-app/blob/main/"
 
@@ -81,6 +113,14 @@ if 'subject_chosen' not in st.session_state:
 if not st.session_state.subject_chosen:
     st.header("Start a New Quiz or Resume")
 
+    # Start new quiz section
+    st.subheader("Start a New Quiz")
+    chosen_subject = st.radio("Select a subject:", SUBJECT_FILES.keys())
+    if st.button("Select Subject"):
+        st.session_state.selected_subject = chosen_subject
+        st.session_state.subject_chosen = True
+        st.rerun()
+
     # Resume from code section
     st.subheader("Resume a Saved Quiz")
     resume_code = st.text_input("Enter your save code:", placeholder="e.g., APPLE-BEAR-42")
@@ -100,14 +140,6 @@ if not st.session_state.subject_chosen:
             st.warning("Please enter a save code.")
     
     st.divider()
-
-    # Start new quiz section
-    st.subheader("Start a New Quiz")
-    chosen_subject = st.radio("Select a subject:", SUBJECT_FILES.keys())
-    if st.button("Select Subject"):
-        st.session_state.selected_subject = chosen_subject
-        st.session_state.subject_chosen = True
-        st.rerun()
 
 # --- Screen 2: Quiz Configuration ---
 elif st.session_state.subject_chosen and not st.session_state.quiz_started:
@@ -162,31 +194,55 @@ elif st.session_state.subject_chosen and not st.session_state.quiz_started:
 
 # --- Screen 3: The Quiz ---
 elif st.session_state.quiz_started:
+    # --- Sidebar ---
     with st.sidebar:
         st.header("⚙️ Settings")
-        st.session_state.auto_next = st.toggle(
-            "Auto-Next Question",
-            value=st.session_state.get('auto_next', True),
-            help="If on, automatically moves to the next question. If off, you must click 'Next Question'."
-        )
+        # Only show quiz-specific settings if the quiz has started
+        if st.session_state.get('quiz_started', False):
+            st.session_state.auto_next = st.toggle(
+                "Auto-Next Question",
+                value=st.session_state.get('auto_next', True),
+                help="If on, automatically moves to the next question. If off, you must click 'Next Question'."
+            )
+            st.divider()
+            st.header("💾 Save and Load")
+            if st.button("Save Progress"):
+                save_code = generate_save_code()
+                save_state(save_code, st.session_state)
+                st.info("Your progress has been saved!")
+                st.success(f"Your save code is: **{save_code}**")
+                st.warning("Copy this code to resume later.")
+                  # --- NEW: Load feature inside an expander ---
+            with st.expander("Load a Quiz (Discards Current Progress)"):
+                resume_code = st.text_input("Enter save code", key="sidebar_resume_code")
+                if st.button("Load Quiz"):
+                    if resume_code:
+                        state_data = load_state(resume_code)
+                        if state_data:
+                            st.session_state.clear()
+                            st.session_state.update(state_data)
+                            st.success("Quiz loaded successfully!")
+                            time.sleep(1)
+                            st.rerun()
+                        else:
+                            st.error("Invalid save code.")
+                    else:
+                        st.warning("Please enter a code.")
+        
+        # --- NEW: General Feedback Form ---
         st.divider()
+        st.header("🗣️ General Feedback")
+        feedback_text = st.text_area("Have feedback or questions? Let me know!", key="general_feedback")
+        if st.button("Submit Feedback"):
+            if submit_general_feedback(feedback_text):
+                st.toast("Thank you for your feedback! 🙏")
+            else:
+                st.toast("Please enter some feedback before submitting.")
 
-        # --- NEW: Save and Exit Feature ---
-        st.header("💾 Save Progress")
-        if st.button("Save"):
-            save_code = generate_save_code()
-            save_state(save_code, st.session_state)
-            st.info("Your progress has been saved!")
-            st.success(f"Your save code is: **{save_code}**")
-            st.warning("Copy this code and use it on the main page to resume.")
-            # We don't exit automatically, to give the user time to copy the code.
-
-    # ... (the rest of your quiz logic for displaying questions, etc.)
-    # Make sure this code is placed within the `elif st.session_state.quiz_started:` block.
     if st.session_state.current_question_index >= len(st.session_state.questions):
         st.header("🎉 Quiz Finished! 🎉")
         st.write(f"Your final score is: **{st.session_state.score}/{len(st.session_state.questions)}**")
-        st.write(f"Nilai kamu {st.session_state.score/len(st.session_state.questions) * 100:.1f}")
+        st.write(f"Nilai kamu {st.session_state.score/len(st.session_state.questions) * 100:.1f} dari 100")
         if st.button("Play Again"):
             for key in st.session_state.keys():
                 del st.session_state[key]
@@ -232,3 +288,15 @@ elif st.session_state.quiz_started:
                     st.session_state.answer_submitted = False
                     st.session_state.scored = False
                     st.rerun()
+        # --- Per-Question Report Expander ---
+        st.divider()
+        with st.expander("Report a problem with this question"):
+            report_text = st.text_area(
+                "Please describe the issue (e.g., wrong answer, typo, unclear question).",
+                key=f"report_{st.session_state.current_question_index}" # Unique key
+            )
+            if st.button("Submit Report", key=f"submit_report_{st.session_state.current_question_index}"):
+                if submit_question_report(st.session_state.selected_subject, q_data['question'], report_text):
+                    st.toast("Report submitted. Thank you for helping improve the quiz! 👍")
+                else:
+                    st.toast("Please describe the problem before submitting.")
