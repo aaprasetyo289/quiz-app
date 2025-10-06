@@ -177,6 +177,7 @@ elif st.session_state.subject_chosen and not st.session_state.quiz_started:
                 
                 st.session_state.questions = all_questions[:num_questions]
                 st.session_state.current_question_index = 0
+                st.session_state.answer_history = [] 
                 st.session_state.score = 0
                 st.session_state.answer_submitted = False
                 st.session_state.scored = False
@@ -247,6 +248,25 @@ elif st.session_state.quiz_started:
             for key in st.session_state.keys():
                 del st.session_state[key]
             st.rerun()
+        st.divider()
+        with st.expander("🧐 Review Your Answers"):
+            for i, entry in enumerate(st.session_state.answer_history):
+                q_data = entry["question_data"]
+                st.subheader(f"Question {i+1}: {q_data['question']}")
+
+                if entry['is_correct']:
+                    st.success(f"✓ You correctly answered: {entry['user_choice']}")
+                else:
+                    # Find the full text of the correct answer
+                    correct_answer_char = q_data['answer']
+                    correct_answer_full = next(
+                        (opt for opt in q_data['options'] if opt.lower().strip().startswith(correct_answer_char)),
+                        "N/A"
+                    )
+                    st.error(f"✗ Your answer: {entry['user_choice']}")
+                    st.info(f"Correct answer: {correct_answer_full}")
+                
+                st.divider()
     else:
         q_data = st.session_state.questions[st.session_state.current_question_index]
         st.write(f"Current Subject: {st.session_state.selected_subject}")
@@ -275,18 +295,30 @@ elif st.session_state.quiz_started:
             else:
                 st.error(f"Sorry, that's incorrect. The correct answer was '{correct_answer}'.")
                 st.session_state.scored = True
+                
+            # Record the answer for the review screen, ensuring it's only recorded once
+            if 'recorded' not in st.session_state or not st.session_state.recorded:
+                history_entry = {
+                    "question_data": q_data,
+                    "user_choice": st.session_state.last_choice,
+                    "is_correct": (chosen_letter == correct_answer)
+                }
+                st.session_state.answer_history.append(history_entry)
+                st.session_state.recorded = True
             
             if st.session_state.auto_next:
                 time.sleep(1.5)
                 st.session_state.current_question_index += 1
                 st.session_state.answer_submitted = False
                 st.session_state.scored = False
+                st.session_state.recorded = False
                 st.rerun()
             else:
                 if st.button("Next Question"):
                     st.session_state.current_question_index += 1
                     st.session_state.answer_submitted = False
                     st.session_state.scored = False
+                    st.session_state.recorded = False
                     st.rerun()
         # --- Per-Question Report Expander ---
         st.divider()
