@@ -6,7 +6,7 @@ import time
 # --- DICTIONARIES AND CONSTANTS ---
 SUBJECT_FILES = {
     "Mankeb (Manajemen dan Keberlanjutan)": "multichoice-uts-mankeb.csv",
-    "Pastra (Pemasaran Strategik)": "multichoice-uts-pastra.csv"
+    "Pastra (Pemasaran Strategik) !!!BELUM BISA!!!": "multichoice-uts-pastra.csv"
 }
 
 # --- NEW: Define the base URL for your GitHub repo ---
