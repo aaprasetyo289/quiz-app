@@ -226,7 +226,7 @@ if 'subject_chosen' not in st.session_state:
 if not st.session_state.subject_chosen:
     # Start new quiz section
     st.header("Start a New Quiz")
-    chosen_subject = st.radio("Select a subject:", SUBJECT_FILES.keys())
+    chosen_subject = st.radio("Select a subject to start the quiz:", SUBJECT_FILES.keys())
     if st.button("Select Subject"):
         st.session_state.session_id = None
         
@@ -254,7 +254,7 @@ if not st.session_state.subject_chosen:
                 st.rerun()
     # Resume from code section
     st.subheader("Resume a Saved Quiz with a Code")
-    resume_code = st.text_input("Enter your save code:", placeholder="e.g., APPLE-BEAR-42")
+    resume_code = st.text_input("Enter your save code:", placeholder="e.g. CUTE-CAT-42")
     if st.button("Load Quiz"):
         if resume_code:
             if restore_session_from_code(resume_code):
