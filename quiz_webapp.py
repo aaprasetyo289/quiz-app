@@ -3,6 +3,69 @@ import pandas as pd
 import random
 import time
 from google.cloud import firestore
+from streamlit_local_storage import LocalStorage
+
+# --- CONSTANTS ---
+# Save code generation
+SAVE_CODE_WORDS = ["APPLE", "BEAR", "CANDY", "DREAM", "EAGLE", "FROG", "GIANT", "HONEY", "IRIS", "JADE"]
+
+# CSV column names
+CSV_QUESTION_COL = 'Pertanyaan'
+CSV_OPTIONS_COL = 'Pilihan Ganda'
+CSV_ANSWER_COL = 'Jawaban'
+
+# Grade thresholds and messages
+GRADE_THRESHOLDS = {
+    100.0: ("A", "Perfect score, congratulations! Kamu dapat nilai **A**"),
+    80: ("A", "Selamat, kamu dapat nilai **A**!"),
+    75: ("AB", "Selamat, kamu dapat nilai **AB**!"),
+    70: ("B", "Selamat, kamu dapat nilai **B**!"),
+    65: ("BC", "Kamu dapat nilai **BC**."),
+    55: ("C", "Kamu dapat nilai **C**. Better luck next time!"),
+    45: ("D", "Kamu dapat nilai **D**. Better luck next time!"),
+    0: ("E", "Kamu dapat nilai **E**. Don't worry, keep practicing and you'll get there!")
+}
+
+# Session state keys to save
+STATE_KEYS_TO_SAVE = [
+    'subject_chosen', 'quiz_started', 'selected_subject',
+    'questions', 'current_question_index', 'score', 'auto_next',
+    'answer_submitted', 'last_choice', 'scored', 'timer_enabled',
+    'show_timer', 'time_elapsed_before_pause', 'answer_history'
+]
+
+# --- Initialise Local Storage ---
+localS = LocalStorage()
+
+# --- Helper Functions ---
+def format_time(seconds):
+    """Formats seconds into MM:SS format."""
+    minutes, secs = divmod(int(seconds), 60)
+    return f"{minutes:02d}:{secs:02d}"
+
+def get_grade_message(score_percentage):
+    """Returns grade letter and message based on score percentage."""
+    for threshold in sorted(GRADE_THRESHOLDS.keys(), reverse=True):
+        if score_percentage >= threshold:
+            grade, message = GRADE_THRESHOLDS[threshold]
+            return grade, message
+    # Fallback (should never reach here due to threshold 0)
+    return "E", "Keep practicing!"
+
+def restore_session_from_code(code, resume_timer=True):
+    """
+    Loads session state from Firestore and updates st.session_state.
+    Returns True if successful, False otherwise.
+    """
+    state_data = load_state(code)
+    if state_data:
+        st.session_state.clear()
+        st.session_state.update(state_data)
+        # Reset the start time to now to resume the timer
+        if resume_timer and st.session_state.get('timer_enabled', False):
+            st.session_state.start_time = time.time()
+        return True
+    return False
 
 # --- Firestore Connection ---
 @st.cache_resource
@@ -15,14 +78,20 @@ def get_db_connection():
     # we can often rely on its auto-discovery of credentials
     return firestore.Client.from_service_account_info(st.secrets["firestore"])
 
-
 db = get_db_connection()
+# --- Local Storage Synchronization ---
+# Use st.session_state as the single source of truth for what should be in the browser
+if 'session_id' not in st.session_state:
+    # On first ever run, set an initial value to trigger a fetch from browser
+    st.session_state.session_id = localS.getItem('session_id')
+
+# Now, on every run, sync the browser's state to match our session_state
+localS.setItem('session_id', st.session_state.session_id)
 
 # --- Helper Functions for Saving and Loading ---
 def generate_save_code():
     """Generates a simple, memorable save code."""
-    words = ["APPLE", "BEAR", "CANDY", "DREAM", "EAGLE", "FROG", "GIANT"]
-    return f"{random.choice(words)}-{random.choice(words)}-{random.randint(10, 99)}"
+    return f"{random.choice(SAVE_CODE_WORDS)}-{random.choice(SAVE_CODE_WORDS)}-{random.randint(10, 99)}"
 
 def save_state(code, session_state):
     """Saves the essential quiz state to Firestore, filtering out widget keys."""
@@ -30,16 +99,9 @@ def save_state(code, session_state):
     if session_state.get('timer_enabled', False):
         current_session_time = time.time() - session_state.start_time
         session_state.time_elapsed_before_pause += current_session_time
-    # Define the specific keys that represent the core state of the quiz.
-    keys_to_save = [
-        'subject_chosen', 'quiz_started', 'selected_subject',
-        'questions', 'current_question_index', 'score', 'auto_next',
-        'answer_submitted', 'last_choice', 'scored', 'timer_enabled', 'show_timer',
-        'time_elapsed_before_pause'
-    ]
     
     # Create a new, clean dictionary containing only the keys we want to persist.
-    state_to_save = {key: session_state[key] for key in keys_to_save if key in session_state}
+    state_to_save = {key: session_state[key] for key in STATE_KEYS_TO_SAVE if key in session_state}
 
     # Save the cleaned dictionary to Firestore.
     doc_ref = db.collection("quiz_sessions").document(code)
@@ -88,14 +150,20 @@ GITHUB_BASE_URL = "https://github.com/aaprasetyo289/quiz-app/blob/main/"
 # --- DATA LOADING (no changes) ---
 @st.cache_data
 def load_questions(file_path):
-    # ... (rest of the function is the same)
+    """Loads quiz questions from a CSV file into a list of dictionaries."""
     try:
         df = pd.read_csv(file_path)
-        df = df.dropna(subset=['Pertanyaan', 'Pilihan Ganda', 'Jawaban'])
+        df = df.dropna(subset=[CSV_QUESTION_COL, CSV_OPTIONS_COL, CSV_ANSWER_COL])
+        
+        # Use to_dict('records') for better performance than iterrows()
         questions = []
-        for index, row in df.iterrows():
-            options_list = [opt.strip() for opt in str(row['Pilihan Ganda']).split('\n')]
-            question_data = {'question': row['Pertanyaan'], 'options': options_list, 'answer': str(row['Jawaban']).lower().strip()}
+        for row in df.to_dict('records'):
+            options_list = [opt.strip() for opt in str(row[CSV_OPTIONS_COL]).split('\n')]
+            question_data = {
+                'question': row[CSV_QUESTION_COL],
+                'options': options_list,
+                'answer': str(row[CSV_ANSWER_COL]).lower().strip()
+            }
             questions.append(question_data)
         return questions
     except FileNotFoundError:
@@ -121,25 +189,37 @@ if not st.session_state.subject_chosen:
     st.subheader("Start a New Quiz")
     chosen_subject = st.radio("Select a subject:", SUBJECT_FILES.keys())
     if st.button("Select Subject"):
+        st.session_state.session_id = None
+        
         st.session_state.selected_subject = chosen_subject
         st.session_state.subject_chosen = True
         st.rerun()
+    # Call the component to trigger retrieval from the browser's local storage.
+    retrieved_session_id = localS.getItem('session_id')
 
+    # Only show the "Resume" section if a valid session ID was actually found.
+    if retrieved_session_id:
+        st.subheader("Resume Your Last Session?")
+        if st.button("Yes, Resume My Last Autosaved Quiz"):
+            if restore_session_from_code(st.session_state.session_id):
+                # Important: Restore the session_id after clearing
+                st.session_state.session_id = localS.getItem('session_id')
+                st.success("Resuming your last session...")
+                time.sleep(1)
+                st.rerun()
+            else:
+                st.error("Could not find your saved session.")
+                st.session_state.session_id = None  # Clear the bad ID
+                time.sleep(1)
+                st.rerun()
     # Resume from code section
-    st.subheader("Resume a Saved Quiz")
+    st.subheader("Resume a Saved Quiz with a Code")
     resume_code = st.text_input("Enter your save code:", placeholder="e.g., APPLE-BEAR-42")
     if st.button("Load Quiz"):
         if resume_code:
-            state_data = load_state(resume_code)
-            if state_data:
-                # Clear current state and load the saved one
-                st.session_state.clear()
-                st.session_state.update(state_data)
+            if restore_session_from_code(resume_code):
                 st.success("Quiz loaded successfully! Resuming...")
                 time.sleep(1)
-                # Reset the start time to now to resume the timer
-                if st.session_state.get('timer_enabled', False):
-                    st.session_state.start_time = time.time()
                 st.rerun()
             else:
                 st.error("Invalid save code. Please try again.")
@@ -177,7 +257,7 @@ elif st.session_state.subject_chosen and not st.session_state.quiz_started:
         
         st.divider()
         st.subheader("⏱️ Timer Options")
-        timer_enabled = st.toggle("Enable Timer?", value=False)
+        timer_enabled = st.toggle("Enable Timer?", value=True)
         show_timer = st.toggle("Show Timer on Screen?", value=True)
 
         col1, col2 = st.columns(2)
@@ -187,6 +267,8 @@ elif st.session_state.subject_chosen and not st.session_state.quiz_started:
                 if randomize:
                     random.shuffle(all_questions)
                 
+                session_id = generate_save_code()
+                st.session_state.session_id = session_id
                 st.session_state.questions = all_questions[:num_questions]
                 st.session_state.current_question_index = 0
                 st.session_state.answer_history = [] 
@@ -236,15 +318,9 @@ elif st.session_state.quiz_started:
                 resume_code = st.text_input("Enter save code", key="sidebar_resume_code")
                 if st.button("Load Quiz"):
                     if resume_code:
-                        state_data = load_state(resume_code)
-                        if state_data:
-                            st.session_state.clear()
-                            st.session_state.update(state_data)
+                        if restore_session_from_code(resume_code):
                             st.success("Quiz loaded successfully!")
                             time.sleep(1)
-                            # Reset the start time to now to resume the timer
-                            if st.session_state.get('timer_enabled', False):
-                                st.session_state.start_time = time.time()
                             st.rerun()
                         else:
                             st.error("Invalid save code.")
@@ -263,6 +339,7 @@ elif st.session_state.quiz_started:
 
     if st.session_state.current_question_index >= len(st.session_state.questions):
         st.header("🎉 Quiz Finished! 🎉")
+        st.session_state.session_id = None
         # Finalize and display the timer if it was enabled
         if st.session_state.get('timer_enabled', False):
             # Calculate and store the final time only once
@@ -271,28 +348,16 @@ elif st.session_state.quiz_started:
                 st.session_state.final_time_taken = st.session_state.time_elapsed_before_pause + current_session_time
             
             # Format and display the final time
-            minutes, seconds = divmod(int(st.session_state.final_time_taken), 60)
-            st.metric("Total Time Taken", f"{minutes:02d}:{seconds:02d}")
+            formatted_time = format_time(st.session_state.final_time_taken)
+            st.metric("Total Time Taken", formatted_time)
+        
         st.write(f"You got **{st.session_state.score} out of {len(st.session_state.questions)}** questions right")
-        final_score = st.session_state.score/len(st.session_state.questions) * 100
-        st.write(f"Nilai kamu {st.session_state.score/len(st.session_state.questions) * 100:.1f} dari 100")
-        match final_score:
-            case 100.0:
-                st.write("Perfect score, congratulations! Kamu dapat nilai **A**")
-            case final_score if 80 <= final_score < 100:
-                st.write("Selamat, kamu dapat nilai **A**!")
-            case final_score if 75 <= final_score < 80:
-                st.write("Selamat, kamu dapat nilai **AB**!")
-            case final_score if 70 <= final_score < 75:
-                st.write("Selamat, kamu dapat nilai **B**!")
-            case final_score if 65 <= final_score < 70:
-                st.write("Kamu dapat nilai **BC**.")
-            case final_score if 55 <= final_score < 65:
-                st.write("Kamu dapat nilai **C**. Better luck next time!")
-            case final_score if 45 <= final_score < 55:
-                st.write("Kamu dapat nilai **D**. Better luck next time!")
-            case _:
-                st.write("Kamu dapat nilai **E**. Don't worry, keep practicing and you'll get there!")
+        final_score = st.session_state.score / len(st.session_state.questions) * 100
+        st.write(f"Nilai kamu {final_score:.1f} dari 100")
+        
+        # Get and display grade message
+        grade, message = get_grade_message(final_score)
+        st.write(message)
             
         if st.button("Play Again"):
             for key in st.session_state.keys():
@@ -333,17 +398,17 @@ elif st.session_state.quiz_started:
                 total_elapsed = st.session_state.time_elapsed_before_pause + current_session_time
                 
                 if st.session_state.show_timer:
-                    # Format as MM:SS
-                    minutes, seconds = divmod(int(total_elapsed), 60)
-                    timer_placeholder.metric("Time Elapsed", f"{minutes:02d}:{seconds:02d}")
+                    formatted_time = format_time(total_elapsed)
+                    timer_placeholder.metric("Time Elapsed", formatted_time)
             else:
                 # When quiz is finished, display the final time
                 total_elapsed = st.session_state.time_elapsed_before_pause
                 if st.session_state.show_timer:
-                    minutes, seconds = divmod(int(total_elapsed), 60)
-                    timer_placeholder.metric("Total Time Taken", f"{minutes:02d}:{seconds:02d}")
+                    formatted_time = format_time(total_elapsed)
+                    timer_placeholder.metric("Total Time Taken", formatted_time)
         st.write(f"Question {st.session_state.current_question_index + 1}/{len(st.session_state.questions)}")
-        st.write(f"**Score: {st.session_state.score}**")
+        st.write(f"**{st.session_state.score}** out of **{len(st.session_state.questions)}** correct.")
+        st.write(f"**Score: {st.session_state.score / len(st.session_state.questions) * 100:.1f}**")
         st.header(q_data['question'])
 
         user_choice = st.radio("Choose your answer:", q_data['options'], key=f"q_{st.session_state.current_question_index}", index=None, disabled=st.session_state.answer_submitted)
@@ -384,6 +449,10 @@ elif st.session_state.quiz_started:
                 st.session_state.answer_submitted = False
                 st.session_state.scored = False
                 st.session_state.recorded = False
+                # Autosave
+                if 'session_id' in st.session_state:
+                    save_state(st.session_state.session_id, st.session_state)
+                #    st.toast(f"Autosaved session: {st.session_state.session_id}", icon="💾")  
                 st.rerun()
             else:
                 if st.button("Next Question"):
@@ -391,6 +460,10 @@ elif st.session_state.quiz_started:
                     st.session_state.answer_submitted = False
                     st.session_state.scored = False
                     st.session_state.recorded = False
+                    # Autosave
+                if 'session_id' in st.session_state:
+                    save_state(st.session_state.session_id, st.session_state)
+                #    st.toast(f"Autosaved session: {st.session_state.session_id}", icon="💾")  
                     st.rerun()
         # --- Per-Question Report Expander ---
         st.divider()
