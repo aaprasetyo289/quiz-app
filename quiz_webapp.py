@@ -466,8 +466,19 @@ elif st.session_state.quiz_started:
                     formatted_time = format_time(total_elapsed)
                     timer_placeholder.metric("Total Time Taken", formatted_time)
         st.write(f"Question {st.session_state.current_question_index + 1}/{len(st.session_state.questions)}")
-        st.write(f"**{st.session_state.score}** out of **{len(st.session_state.questions)}** correct.")
-        st.write(f"**Score: {st.session_state.score / len(st.session_state.questions) * 100:.1f}**")
+        questions_answered = st.session_state.current_question_index
+        current_score = st.session_state.score
+
+        # Calculate percentage based on questions answered, handling the first question case
+        if questions_answered > 0:
+            percentage = (current_score / questions_answered) * 100
+        else:
+        # Before any questions are answered, the score is perfect so far
+            percentage = 100.0
+
+        # Display using st.metric for a nice visual
+        st.metric(label="Current Score", value=f"{percentage:.1f}%")
+        st.write(f"You have answered **{current_score}** of **{questions_answered}** questions correctly.")
         st.header(q_data['question'])
 
         user_choice = st.radio("Choose your answer:", q_data['options'], key=f"q_{st.session_state.current_question_index}", index=None, disabled=st.session_state.answer_submitted)
