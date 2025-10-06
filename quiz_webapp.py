@@ -61,6 +61,9 @@ def restore_session_from_code(code, resume_timer=True):
     if state_data:
         st.session_state.clear()
         st.session_state.update(state_data)
+        # If loading an old save file, ensure answer_history exists
+        if 'answer_history' not in st.session_state:
+            st.session_state.answer_history = []
         # Reset the start time to now to resume the timer
         if resume_timer and st.session_state.get('timer_enabled', False):
             st.session_state.start_time = time.time()
