@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import random
 import time
-import json
 from google.cloud import firestore
 
 # --- Firestore Connection ---
@@ -27,11 +26,16 @@ def generate_save_code():
 
 def save_state(code, session_state):
     """Saves the essential quiz state to Firestore, filtering out widget keys."""
+    # If the timer is running, "freeze" the elapsed time before saving.
+    if session_state.get('timer_enabled', False):
+        current_session_time = time.time() - session_state.start_time
+        session_state.time_elapsed_before_pause += current_session_time
     # Define the specific keys that represent the core state of the quiz.
     keys_to_save = [
         'subject_chosen', 'quiz_started', 'selected_subject',
         'questions', 'current_question_index', 'score', 'auto_next',
-        'answer_submitted', 'last_choice', 'scored'
+        'answer_submitted', 'last_choice', 'scored', 'timer_enabled', 'show_timer',
+        'time_elapsed_before_pause'
     ]
     
     # Create a new, clean dictionary containing only the keys we want to persist.
@@ -133,6 +137,9 @@ if not st.session_state.subject_chosen:
                 st.session_state.update(state_data)
                 st.success("Quiz loaded successfully! Resuming...")
                 time.sleep(1)
+                # Reset the start time to now to resume the timer
+                if st.session_state.get('timer_enabled', False):
+                    st.session_state.start_time = time.time()
                 st.rerun()
             else:
                 st.error("Invalid save code. Please try again.")
@@ -168,6 +175,11 @@ elif st.session_state.subject_chosen and not st.session_state.quiz_started:
         
         randomize = st.checkbox("Randomize question order", value=True)
         
+        st.divider()
+        st.subheader("⏱️ Timer Options")
+        timer_enabled = st.toggle("Enable Timer?", value=False)
+        show_timer = st.toggle("Show Timer on Screen?", value=True)
+
         col1, col2 = st.columns(2)
         with col1:
             if st.button("Start Quiz", type="primary"):
@@ -178,6 +190,12 @@ elif st.session_state.subject_chosen and not st.session_state.quiz_started:
                 st.session_state.questions = all_questions[:num_questions]
                 st.session_state.current_question_index = 0
                 st.session_state.answer_history = [] 
+                st.session_state.timer_enabled = timer_enabled
+                st.session_state.show_timer = show_timer
+                if timer_enabled:
+                    st.session_state.start_time = time.time()
+                    st.session_state.time_elapsed_before_pause = 0
+                    st.session_state.final_time_taken = None
                 st.session_state.score = 0
                 st.session_state.answer_submitted = False
                 st.session_state.scored = False
@@ -224,6 +242,9 @@ elif st.session_state.quiz_started:
                             st.session_state.update(state_data)
                             st.success("Quiz loaded successfully!")
                             time.sleep(1)
+                            # Reset the start time to now to resume the timer
+                            if st.session_state.get('timer_enabled', False):
+                                st.session_state.start_time = time.time()
                             st.rerun()
                         else:
                             st.error("Invalid save code.")
@@ -242,8 +263,37 @@ elif st.session_state.quiz_started:
 
     if st.session_state.current_question_index >= len(st.session_state.questions):
         st.header("🎉 Quiz Finished! 🎉")
-        st.write(f"Your final score is: **{st.session_state.score}/{len(st.session_state.questions)}**")
+        # Finalize and display the timer if it was enabled
+        if st.session_state.get('timer_enabled', False):
+            # Calculate and store the final time only once
+            if st.session_state.get('final_time_taken') is None:
+                current_session_time = time.time() - st.session_state.start_time
+                st.session_state.final_time_taken = st.session_state.time_elapsed_before_pause + current_session_time
+            
+            # Format and display the final time
+            minutes, seconds = divmod(int(st.session_state.final_time_taken), 60)
+            st.metric("Total Time Taken", f"{minutes:02d}:{seconds:02d}")
+        st.write(f"You got **{st.session_state.score} out of {len(st.session_state.questions)}** questions right")
+        final_score = st.session_state.score/len(st.session_state.questions) * 100
         st.write(f"Nilai kamu {st.session_state.score/len(st.session_state.questions) * 100:.1f} dari 100")
+        match final_score:
+            case 100.0:
+                st.write("Perfect score, congratulations! Kamu dapat nilai **A**")
+            case final_score if 80 <= final_score < 100:
+                st.write("Selamat, kamu dapat nilai **A**!")
+            case final_score if 75 <= final_score < 80:
+                st.write("Selamat, kamu dapat nilai **AB**!")
+            case final_score if 70 <= final_score < 75:
+                st.write("Selamat, kamu dapat nilai **B**!")
+            case final_score if 65 <= final_score < 70:
+                st.write("Kamu dapat nilai **BC**.")
+            case final_score if 55 <= final_score < 65:
+                st.write("Kamu dapat nilai **C**. Better luck next time!")
+            case final_score if 45 <= final_score < 55:
+                st.write("Kamu dapat nilai **D**. Better luck next time!")
+            case _:
+                st.write("Kamu dapat nilai **E**. Don't worry, keep practicing and you'll get there!")
+            
         if st.button("Play Again"):
             for key in st.session_state.keys():
                 del st.session_state[key]
@@ -270,6 +320,28 @@ elif st.session_state.quiz_started:
     else:
         q_data = st.session_state.questions[st.session_state.current_question_index]
         st.write(f"Current Subject: {st.session_state.selected_subject}")
+        # Timer display and logic
+        if st.session_state.get('timer_enabled', False):
+            # Create a placeholder for the timer display
+            timer_placeholder = st.empty()
+
+            # Calculate remaining time only if the quiz is not finished
+            if st.session_state.current_question_index < len(st.session_state.questions):
+                # Time elapsed in the current active session
+                current_session_time = time.time() - st.session_state.start_time
+                # Total elapsed time including previous saved sessions
+                total_elapsed = st.session_state.time_elapsed_before_pause + current_session_time
+                
+                if st.session_state.show_timer:
+                    # Format as MM:SS
+                    minutes, seconds = divmod(int(total_elapsed), 60)
+                    timer_placeholder.metric("Time Elapsed", f"{minutes:02d}:{seconds:02d}")
+            else:
+                # When quiz is finished, display the final time
+                total_elapsed = st.session_state.time_elapsed_before_pause
+                if st.session_state.show_timer:
+                    minutes, seconds = divmod(int(total_elapsed), 60)
+                    timer_placeholder.metric("Total Time Taken", f"{minutes:02d}:{seconds:02d}")
         st.write(f"Question {st.session_state.current_question_index + 1}/{len(st.session_state.questions)}")
         st.write(f"**Score: {st.session_state.score}**")
         st.header(q_data['question'])
@@ -332,3 +404,9 @@ elif st.session_state.quiz_started:
                     st.toast("Report submitted. Thank you for helping improve the quiz! 👍")
                 else:
                     st.toast("Please describe the problem before submitting.")
+                    
+        if (st.session_state.get('timer_enabled', False) and
+        st.session_state.get('show_timer', False) and
+        st.session_state.current_question_index < len(st.session_state.questions)):    
+            time.sleep(1)
+            st.rerun()
