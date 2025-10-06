@@ -140,6 +140,44 @@ def submit_question_report(subject, question, report_text):
         return True
     return False
 
+def generate_report_content(session_state):
+    """Generates the content for the results report file."""
+    subject = session_state.selected_subject
+    score = session_state.score
+    total_questions = len(session_state.questions)
+    final_score_percent = score / total_questions * 100
+    grade, _ = get_grade_message(final_score_percent)
+    
+    # Header and Summary
+    report_lines = [
+        f"# Quiz Results: {subject}",
+        "---",
+        "## Summary",
+        f"- **Final Score**: {score} / {total_questions} ({final_score_percent:.1f}%)",
+        f"- **Grade**: {grade}"
+    ]
+    
+    # Add time taken if the timer was enabled
+    if session_state.get('timer_enabled', False) and session_state.get('final_time_taken') is not None:
+        formatted_time = format_time(session_state.final_time_taken)
+        report_lines.append(f"- **Time Taken**: {formatted_time}")
+    
+    # Detailed Review
+    report_lines.extend(["", "---", "## Answer Review"])
+    for i, entry in enumerate(session_state.answer_history):
+        q_data = entry["question_data"]
+        report_lines.append(f"\n### Question {i+1}: {q_data['question']}")
+        
+        if entry['is_correct']:
+            report_lines.append(f"- ✓ **Your Answer**: {entry['user_choice']} (Correct)")
+        else:
+            correct_char = q_data['answer']
+            correct_full = next((opt for opt in q_data['options'] if opt.lower().strip().startswith(correct_char)), "N/A")
+            report_lines.append(f"- ✗ **Your Answer**: {entry['user_choice']}")
+            report_lines.append(f"- **Correct Answer**: {correct_full}")
+            
+    return "\n".join(report_lines)
+
 # --- DICTIONARIES AND CONSTANTS (no changes) ---
 SUBJECT_FILES = {
     "Mankeb (Manajemen dan Keberlanjutan)": "multichoice-uts-mankeb.csv",
@@ -183,10 +221,8 @@ if 'subject_chosen' not in st.session_state:
 
 # --- Screen 1: Subject Selection & Load ---
 if not st.session_state.subject_chosen:
-    st.header("Start a New Quiz or Resume")
-
     # Start new quiz section
-    st.subheader("Start a New Quiz")
+    st.header("Start a New Quiz")
     chosen_subject = st.radio("Select a subject:", SUBJECT_FILES.keys())
     if st.button("Select Subject"):
         st.session_state.session_id = None
@@ -200,6 +236,7 @@ if not st.session_state.subject_chosen:
     # Only show the "Resume" section if a valid session ID was actually found.
     if retrieved_session_id:
         st.subheader("Resume Your Last Session?")
+        st.write("Click this button to resume your last session.")
         if st.button("Yes, Resume My Last Autosaved Quiz"):
             if restore_session_from_code(st.session_state.session_id):
                 # Important: Restore the session_id after clearing
@@ -253,7 +290,7 @@ elif st.session_state.subject_chosen and not st.session_state.quiz_started:
             step=1
         )
         
-        randomize = st.checkbox("Randomize question order", value=True)
+        randomize = st.checkbox("Randomise question order", value=True)
         
         st.divider()
         st.subheader("⏱️ Timer Options")
@@ -359,10 +396,25 @@ elif st.session_state.quiz_started:
         grade, message = get_grade_message(final_score)
         st.write(message)
             
-        if st.button("Play Again"):
-            for key in st.session_state.keys():
-                del st.session_state[key]
-            st.rerun()
+        # Prepare the report content for download
+        report_data = generate_report_content(st.session_state)
+        file_name = f"Quiz_Results_{st.session_state.selected_subject.replace(' ', '_')}.md"
+
+        # Create columns for the buttons
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Play Again", use_container_width=True):
+                for key in st.session_state.keys():
+                    del st.session_state[key]
+                st.rerun()
+        with col2:
+            st.download_button(
+                label="Export Results",
+                data=report_data,
+                file_name=file_name,
+                mime="text/markdown",
+                use_container_width=True
+            )
         st.divider()
         with st.expander("🧐 Review Your Answers"):
             for i, entry in enumerate(st.session_state.answer_history):
