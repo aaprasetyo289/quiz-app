@@ -102,6 +102,7 @@ def save_state(code, session_state):
     if session_state.get('timer_enabled', False):
         current_session_time = time.time() - session_state.start_time
         session_state.time_elapsed_before_pause += current_session_time
+        session_state.start_time = time.time()
     
     # Create a new, clean dictionary containing only the keys we want to persist.
     state_to_save = {key: session_state[key] for key in STATE_KEYS_TO_SAVE if key in session_state}
