@@ -348,7 +348,11 @@ elif st.session_state.quiz_started:
             st.divider()
             st.header("💾 Save and Load")
             if st.button("Save Progress"):
-                save_code = generate_save_code()
+                while True:
+                    save_code = generate_save_code()
+                    if load_state(save_code) is None:
+                    # This code is unique, so we can exit the loop.
+                        break
                 save_state(save_code, st.session_state)
                 st.info("Your progress has been saved!")
                 st.success(f"Your save code is: **{save_code}**")
