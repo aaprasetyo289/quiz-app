@@ -34,7 +34,7 @@ def load_questions(file_path):
 
 # --- APP LOGIC ---
 
-st.title("📚 Adit's Quiz App!")
+st.title("📚 Quiz App!")
 
 # --- Initialize States ---
 if 'subject_chosen' not in st.session_state:
