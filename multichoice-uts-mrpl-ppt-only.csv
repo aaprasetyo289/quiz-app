@@ -1,0 +1,401 @@
+Pertanyaan,Pilihan Ganda,Jawaban
+"Menurut definisi, apa saja yang termasuk dalam supply chain? (Bab 1)","a. Hanya proses manufaktur dan distribusi produk akhir.
+b. Semua tahapan yang terlibat secara langsung atau tidak langsung dalam memenuhi kebutuhan pelanggan.
+c. Aktivitas pemasaran, penjualan, dan layanan pelanggan saja.
+d. Proses internal perusahaan untuk pengembangan produk.
+e. Aliran informasi dan keuangan, tidak termasuk aliran produk fisik.",b
+"Apa tujuan utama dari Supply Chain Management (SCM)? (Bab 1)","a. Meminimalkan biaya pada setiap tahap individu dalam rantai pasok.
+b. Memaksimalkan profitabilitas pada tahap manufaktur saja.
+c. Memaksimalkan total profitabilitas keseluruhan rantai pasok.
+d. Mempercepat pengiriman produk tanpa mempertimbangkan biaya.
+e. Mengelola aliran produk saja, mengabaikan informasi dan keuangan.",c
+"Bagaimana 'supply chain value' didefinisikan? (Bab 1)","a. Total pendapatan yang diterima dari pelanggan.
+b. Perbedaan antara total pendapatan dan biaya pada satu perusahaan.
+c. Jumlah semua biaya yang dikeluarkan oleh rantai pasok.
+d. Perbedaan antara manfaat produk akhir bagi pelanggan dan total upaya yang dikeluarkan rantai pasok untuk memenuhinya.
+e. Harga jual produk akhir di pasar.",d
+"Keberhasilan sebuah supply chain idealnya diukur berdasarkan apa? (Bab 1)","a. Profitabilitas individu dari perusahaan manufaktur.
+b. Kecepatan pengiriman ke distributor.
+c. Total profitabilitas yang dibagi ke seluruh tahapan rantai pasok.
+d. Tingkat kepuasan pemasok.
+e. Biaya logistik yang paling rendah.",c
+"Manakah pernyataan yang paling tepat membedakan antara Logistik dan Supply Chain? (Bab 1)","a. Logistik adalah konsep yang lebih luas daripada supply chain.
+b. Logistik hanya melibatkan satu organisasi, sedangkan supply chain melibatkan kolaborasi beberapa organisasi.
+c. Supply chain adalah bagian dari logistik.
+d. Logistik hanya berfokus pada aliran informasi, sedangkan supply chain pada aliran produk.
+e. Tidak ada perbedaan antara logistik dan supply chain.",b
+"Aktivitas seperti warehousing, packaging, dan stock control merupakan bagian dari? (Bab 1)","a. Supply Chain Management
+b. Customer Relationship Management
+c. Logistik
+d. Product Development
+e. Supplier Relationship Management",c
+"Manakah yang termasuk dalam fase keputusan 'Supply Chain Strategy/Design'? (Bab 1)","a. Mengalokasikan pesanan individual pelanggan ke jadwal produksi harian.
+b. Menentukan lokasi dan kapasitas fasilitas produksi dan gudang.
+c. Membuat peramalan permintaan untuk kuartal mendatang.
+d. Menjadwalkan pengiriman mingguan ke retailer.
+e. Mengatur urutan pekerjaan perakitan di lantai produksi.",b
+"Keputusan dalam fase 'Supply Chain Strategy/Design' memiliki karakteristik... (Bab 1)","a. Bersifat jangka pendek dan mudah diubah.
+b. Memiliki horizon waktu mingguan atau harian.
+c. Bersifat jangka panjang dan mahal untuk diubah.
+d. Fokus pada pesanan individual pelanggan.
+e. Memiliki tingkat ketidakpastian yang sangat rendah.",c
+"Fase 'Supply Chain Planning' diawali dengan kegiatan apa? (Bab 1)","a. Menerima pesanan dari pelanggan.
+b. Memilih lokasi pabrik baru.
+c. Peramalan permintaan untuk periode mendatang (misalnya, tahunan).
+d. Menjadwalkan pengiriman harian.
+e. Memilih moda transportasi untuk jangka panjang.",c
+"Mengalokasikan pesanan ke dalam persediaan atau produksi dan mengatur jadwal pengiriman adalah contoh keputusan pada fase? (Bab 1)","a. Supply Chain Strategy/Design
+b. Supply Chain Planning
+c. Supply Chain Operation
+d. Product Development
+e. Supplier Selection",c
+"Dalam 'Push/Pull View', proses yang diinisiasi sebagai antisipasi terhadap pesanan pelanggan disebut? (Bab 1)","a. Proses Pull (reactive)
+b. Proses Push (speculative)
+c. Proses Operasi (operational)
+d. Proses Stratejik (strategic)
+e. Proses Responsif (responsive)",b
+"Proses 'Pull' dalam supply chain memiliki karakteristik... (Bab 1)","a. Eksekusi diinisiasi berdasarkan peramalan jangka panjang.
+b. Bersifat spekulatif untuk menekan biaya produksi.
+c. Eksekusi diinisiasi sebagai respon terhadap pesanan pelanggan yang sudah masuk.
+d. Fokus utama adalah efisiensi produksi massal.
+e. Dilakukan jauh sebelum permintaan pelanggan diketahui.",c
+"Manakah yang BUKAN merupakan salah satu dari tiga proses makro dalam supply chain sebuah perusahaan? (Bab 1)","a. Customer Relationship Management (CRM)
+b. Internal Supply Chain Management (ISCM)
+c. Supplier Relationship Management (SRM)
+d. Human Resource Management (HRM)
+e. Semua jawaban di atas adalah proses makro SCM.",d
+"Aliran apa saja yang ada di dalam sebuah supply chain? (Bab 1)","a. Hanya aliran produk dari pemasok ke pelanggan.
+b. Hanya aliran uang dari pelanggan ke pemasok.
+c. Hanya aliran informasi antar tahapan.
+d. Aliran produk, uang, dan informasi.
+e. Aliran produk dan informasi saja.",d
+"Mengapa supply chain terkadang disebut juga sebagai 'supply web' atau 'supply network'? (Bab 1)","a. Karena bentuknya selalu linear dan sederhana.
+b. Karena hanya melibatkan satu pemasok dan satu pelanggan.
+c. Untuk mempertimbangkan kompleksitas hubungan antar banyak aktor/entitas.
+d. Karena hanya beroperasi melalui internet (web).
+e. Karena merupakan istilah yang lebih kuno.",c
+"Keputusan mengenai moda transportasi yang akan digunakan untuk jangka panjang termasuk dalam fase... (Bab 1)","a. Supply Chain Operation
+b. Supply Chain Planning
+c. Supply Chain Strategy/Design
+d. Customer Order Cycle
+e. Replenishment Cycle",c
+"Manakah horizon waktu yang paling sesuai untuk fase 'Supply Chain Operation'? (Bab 1)","a. 5-10 tahun
+b. 1-2 tahun
+c. Kuartalan atau tahunan
+d. Mingguan atau harian
+e. Jangka panjang tak terbatas",d
+"Menurut materi, sumber utama penerimaan (revenue) dalam sebuah supply chain adalah... (Bab 1)","a. Pemasok
+b. Manufaktur
+c. Distributor
+d. Pelanggan
+e. Pemerintah",d
+"Biaya dalam supply chain bersumber dari... (Bab 1)","a. Hanya dari biaya transportasi.
+b. Hanya dari biaya penyimpanan di gudang.
+c. Aliran informasi, produk, atau uang antar tahapan supply chain.
+d. Hanya dari biaya pembelian bahan baku.
+e. Hanya dari biaya promosi dan pemasaran.",c
+"Dalam contoh Dell, perbedaan antara $2000 yang diterima dari pelanggan dan jumlah seluruh biaya (informasi, transportasi, komponen, dll.) disebut... (Bab 1)","a. Supply Chain Revenue
+b. Supply Chain Cost
+c. Supply Chain Profit
+d. Supply Chain Value
+e. Supply Chain Deficit",c
+"Manakah yang BUKAN merupakan komponen konfigurasi kunci supply chain menurut Cohen & Roussel (2004)? (Bab 2)","a. Operation strategy
+b. Outsourcing strategy
+c. Financial strategy
+d. Channel strategy
+e. Asset network",c
+"Strategi operasi di mana produk diproduksi secara massal dengan persediaan tinggi untuk menekan biaya per unit disebut? (Bab 2)","a. Make to order
+b. Configure to order
+c. Engineer to order
+d. Make to stock
+e. Just in time",d
+"Strategi 'Configure to order' (CTO) paling cocok untuk produk dengan karakteristik apa? (Bab 2)","a. Produk yang sangat kompleks dan dibuat sesuai spesifikasi pelanggan khusus.
+b. Produk standar yang diproduksi massal untuk persediaan.
+c. Produk akhir yang memiliki banyak variasi, di mana komponen umum dirakit terlebih dahulu.
+d. Produk yang diproduksi hanya setelah pesanan dari pelanggan diterima.
+e. Produk dengan permintaan yang sangat mudah diprediksi.",c
+"Menurut materi, aktivitas apa yang sebaiknya dipertahankan secara 'in-house' dan tidak di-'outsource'? (Bab 2)","a. Aktivitas dengan tingkat kepentingan strategis rendah.
+b. Aktivitas yang dapat dilakukan pihak ketiga lebih murah.
+c. Aktivitas yang menjadi pembeda strategis (strategic differentiator) perusahaan.
+d. Semua aktivitas non-inti perusahaan.
+e. Aktivitas yang tidak memerlukan skala operasi besar.",c
+"Apa yang dimaksud dengan 'Ketepatan Strategi' (Strategic Fit) dalam supply chain? (Bab 2)","a. Konsistensi antara strategi pemasaran dan strategi keuangan.
+b. Konsistensi antara prioritas strategi bersaing dan kapabilitas supply chain.
+c. Kemampuan perusahaan untuk memiliki biaya produksi terendah.
+d. Kemampuan supply chain untuk merespon secepat mungkin.
+e. Keselarasan antara strategi pemasok dan strategi distributor.",b
+"Apa tahap pertama dalam proses mencapai ketepatan strategi? (Bab 2)","a. Memahami kapabilitas supply chain.
+b. Memilih pemasok yang paling efisien.
+c. Merancang jaringan distribusi.
+d. Memahami pelanggan dan ketidakpastian supply chain.
+e. Menetapkan harga produk.",d
+"Ketidakpastian permintaan implisit (implied demand uncertainty) akan meningkat jika... (Bab 2)","a. Lead time yang diinginkan pelanggan semakin panjang.
+b. Tingkat inovasi produk menurun.
+c. Variasi jenis produk yang dibutuhkan pelanggan meningkat.
+d. Jumlah saluran pemasaran berkurang.
+e. Kisaran jumlah permintaan pelanggan menyempit.",c
+"Kemampuan supply chain untuk merespon kisaran jumlah permintaan yang lebar dan memenuhi lead time yang pendek disebut... (Bab 2)","a. Supply chain efficiency
+b. Supply chain profitability
+c. Supply chain responsiveness
+d. Supply chain design
+e. Supply chain uncertainty",c
+"Hubungan antara biaya dan responsiveness dalam supply chain pada umumnya adalah... (Bab 2)","a. Semakin tinggi responsiveness, semakin tinggi biayanya.
+b. Semakin tinggi responsiveness, semakin rendah biayanya.
+c. Biaya dan responsiveness tidak saling berhubungan.
+d. Biaya akan selalu konstan terlepas dari tingkat responsiveness.
+e. Responsiveness hanya dipengaruhi oleh teknologi, bukan biaya.",a
+"Dalam spektrum 'Uncertainty/Responsiveness Map', sebuah produk dengan permintaan yang sangat pasti (certain demand) paling cocok dengan supply chain yang... (Bab 2)","a. Sangat responsif (highly responsive)
+b. Cukup responsif (somewhat responsive)
+c. Seimbang antara efisiensi dan responsivitas
+d. Sangat efisien (highly efficient)
+e. Fleksibel",d
+"Manakah karakteristik dari 'Efficient Supply Chain'? (Bab 2)","a. Tujuan utama adalah merespon dengan cepat.
+b. Strategi inventori adalah menyimpan buffer stock dalam jumlah besar.
+c. Strategi pemilihan pemasok berfokus pada kecepatan dan fleksibilitas.
+d. Strategi penetapan harga menggunakan margin yang rendah.
+e. Strategi manufaktur mengutamakan fleksibilitas kapasitas.",d
+"Sebuah perusahaan yang memproduksi barang elektronik baru dengan permintaan yang sangat tidak pasti sebaiknya mengadopsi... (Bab 2)","a. Efficient supply chain
+b. Low-cost supply chain
+c. Responsive supply chain
+d. Make-to-stock supply chain
+e. Outsourced supply chain",c
+"Tujuan utama dari 'Responsive Supply Chain' adalah... (Bab 2)","a. Meminimalkan biaya inventori.
+b. Mencapai utilisasi kapasitas produksi yang tinggi.
+c. Merespon permintaan pelanggan dengan cepat.
+d. Memilih moda transportasi yang paling murah.
+e. Menawarkan harga produk serendah mungkin.",c
+"Menurut perbandingan, strategi desain produk untuk 'Efficient Supply Chain' adalah... (Bab 2)","a. Desain modular yang memungkinkan penundaan (postponement).
+b. Memaksimalkan variasi produk.
+c. Fokus pada inovasi radikal.
+d. Meminimalkan biaya produk.
+e. Menggunakan komponen yang paling mahal dan berkualitas tinggi.",d
+"Bagaimana siklus hidup produk (product life cycle) mempengaruhi strategi supply chain? (Bab 2)","a. Strategi supply chain harus tetap sama sepanjang siklus hidup produk.
+b. Pada tahap pengenalan, efisiensi lebih penting daripada responsivitas.
+c. Strategi harus bergeser dari fokus pada responsivitas di awal menjadi efisiensi saat produk dewasa (mature).
+d. Pada tahap dewasa, permintaan menjadi tidak pasti dan margin keuntungan tinggi.
+e. Siklus hidup produk tidak memiliki pengaruh terhadap strategi supply chain.",c
+"Pada tahap 'kedewasaan' (maturity) sebuah produk, faktor yang menjadi sangat penting bagi pelanggan adalah... (Bab 2)","a. Inovasi fitur baru.
+b. Ketersediaan produk yang sangat cepat.
+c. Harga.
+d. Variasi produk yang sangat banyak.
+e. Spesifikasi kustom.",c
+"Contoh perusahaan yang sering diasosiasikan dengan 'Responsive Supply Chain' dalam materi adalah... (Bab 2)","a. Barilla
+b. Integrated steel mill
+c. Hanes apparel
+d. Dell
+e. Salt at a supermarket",d
+"Menurut materi, apa yang harus dilakukan perusahaan jika melayani segmen pelanggan yang berbeda dengan ketidakpastian permintaan yang berbeda pula? (Bab 2)","a. Menggunakan satu jenis supply chain yang sama untuk semua segmen.
+b. Hanya fokus pada segmen dengan permintaan yang paling pasti.
+c. Menyesuaikan (tailor) supply chain untuk memenuhi kebutuhan setiap segmen atau produk.
+d. Mengabaikan segmen dengan permintaan yang tidak pasti.
+e. Selalu memilih strategi yang paling efisien untuk menekan biaya.",c
+"Strategi operasi yang mirip dengan 'make to order' namun digunakan pada produk yang sangat kompleks dengan spesifikasi pelanggan khusus adalah... (Bab 2)","a. Make to stock
+b. Configure to order
+c. Engineer to order
+d. Assemble to order
+e. Mass customization",c
+"Strategi fungsional mana yang TIDAK disebutkan harus selaras dengan 'Supply Chain Strategy'? (Bab 2)","a. Competitive strategy
+b. Product development strategy
+c. Marketing and sales strategy
+d. Human resources strategy
+e. Semua jawaban di atas disebutkan harus selaras.",d
+"Manakah dari berikut ini yang termasuk dalam 'Logistical Drivers' dalam struktur pengendali supply chain? (Bab 3)","a. Sourcing, Pricing, dan Information
+b. Facilities, Inventory, dan Transportation
+c. Information, Inventory, dan Facilities
+d. Pricing, Transportation, dan Sourcing
+e. Competitive Strategy dan Supply Chain Strategy",b
+"Manakah yang termasuk dalam 'Cross-Functional Drivers' dalam struktur pengendali supply chain? (Bab 3)","a. Facilities, Inventory, dan Transportation
+b. Competitive Strategy dan Sourcing
+c. Responsiveness dan Efficiency
+d. Inventory, Pricing, dan Information
+e. Information, Sourcing, dan Pricing",e
+"Sebuah perusahaan ingin memprioritaskan 'efficiency' dalam strategi fasilitasnya. Pendekatan manakah yang paling sesuai? (Bab 3)","a. Membangun banyak fasilitas kecil yang tersebar dekat pelanggan.
+b. Menggunakan sistem desentralisasi untuk merespon cepat.
+c. Membangun sedikit fasilitas berskala besar untuk mencapai skala keekonomian.
+d. Memfokuskan pada fleksibilitas kapasitas daripada utilisasi.
+e. Menggunakan metode cross-docking di banyak gudang.",c
+"Sebuah perusahaan yang ingin sangat 'responsive' akan cenderung... (Bab 3)","a. Mengurangi jumlah persediaan untuk menekan biaya.
+b. Memilih moda transportasi yang paling murah dan lambat.
+c. Memiliki persediaan dalam jumlah besar yang ditempatkan dekat dengan pelanggan.
+d. Memusatkan semua fasilitas di satu lokasi untuk efisiensi.
+e. Menggunakan sistem informasi yang minimalis.",c
+"Persediaan yang disimpan untuk mengantisipasi permintaan yang melebihi perkiraan disebut... (Bab 3)","a. Cycle inventory
+b. Seasonal inventory
+c. Safety inventory
+d. In-transit inventory
+e. Speculative inventory",c
+"Trade-off utama yang dihadapi dalam keputusan mengenai 'safety inventory' adalah... (Bab 3)","a. Biaya menyimpan persediaan berlebih vs. biaya kehilangan potensi penjualan.
+b. Biaya pemesanan vs. biaya penyimpanan.
+c. Biaya fleksibilitas produksi vs. biaya transportasi.
+d. Biaya sentralisasi vs. desentralisasi.
+e. Biaya outsourcing vs. biaya in-house.",a
+"Jika sebuah perusahaan memprioritaskan 'responsiveness' dalam transportasinya, moda apa yang kemungkinan besar akan dipilih? (Bab 3)","a. Kapal laut
+b. Kereta api (rail)
+c. Pipa (pipeline)
+d. Udara (air freight)
+e. Truk dengan rute paling ekonomis",d
+"Pengendali (driver) manakah yang memiliki peran unik karena dapat meningkatkan 'responsiveness' dan 'efficiency' secara bersamaan, sehingga mengurangi trade-off? (Bab 3)","a. Facilities
+b. Inventory
+c. Transportation
+d. Information
+e. Sourcing",d
+"Teknologi seperti EDI (Electronic Data Interchange) dan ERP (Enterprise Resource Planning systems) merupakan komponen keputusan dari pengendali... (Bab 3)","a. Facilities
+b. Transportation
+c. Information
+d. Pricing
+e. Inventory",c
+"Proses bisnis yang dibutuhkan untuk membeli barang dan jasa dalam supply chain disebut... (Bab 3)","a. Pricing
+b. Sourcing (Sumber pasokan)
+c. Inventory Management
+d. Transportation
+e. Warehousing",b
+"Trade-off utama secara keseluruhan (overall trade-off) dalam keputusan 'Sourcing' adalah... (Bab 3)","a. Responsiveness versus efficiency
+b. Meningkatkan keuntungan perusahaan (firm profits)
+c. Meningkatkan keuntungan rantai pasok (supply chain profits)
+d. Sentralisasi versus desentralisasi
+e. Push versus pull",c
+"Strategi 'Everyday low pricing' adalah salah satu komponen keputusan dari pengendali... (Bab 3)","a. Inventory
+b. Facilities
+c. Sourcing
+d. Pricing
+e. Information",d
+"Menurut materi, apa peran utama dari fasilitas (facilities) dalam supply chain? (Bab 3)","a. Sebagai penghubung antar tahapan supply chain.
+b. Sebagai tempat di mana proses manufaktur atau penyimpanan (gudang) terjadi.
+c. Untuk menggerakkan produk di antara tahapan-tahapan.
+d. Untuk menentukan harga jual produk kepada pelanggan.
+e. Untuk membeli barang dan jasa yang dibutuhkan.",b
+"Mengapa persediaan (inventory) ada dalam supply chain? (Bab 3)","a. Karena adanya kesempurnaan dalam peramalan permintaan.
+b. Karena adanya keselarasan antara strategi kompetitif dan strategi supply chain.
+c. Karena adanya ketidakcocokan antara permintaan dan penawaran/pasokan.
+d. Karena biaya transportasi yang sangat rendah.
+e. Karena tuntutan dari pemerintah.",c
+"Keputusan untuk membuat sendiri (in-house) atau membeli dari luar (outsource) merupakan bagian dari komponen keputusan... (Bab 3)","a. Pricing
+b. Information
+c. Inventory
+d. Sourcing
+e. Transportation",d
+"Strategi harga dapat digunakan untuk... (Bab 3)","a. Mengurangi jumlah fasilitas yang dibutuhkan.
+b. Mencocokkan permintaan dan penawaran.
+c. Menentukan moda transportasi yang akan digunakan.
+d. Memilih pemasok yang paling tepat.
+e. Mengurangi safety inventory.",b
+"Manakah yang BUKAN merupakan hambatan/tantangan dalam mencapai ketepatan strategi menurut materi? (Bab 3)","a. Semakin pendeknya siklus hidup produk (product life cycles).
+b. Meningkatnya variasi produk.
+c. Fragmentasi kepemilikan dalam supply chain.
+d. Meningkatnya tuntutan pelanggan.
+e. Penurunan tingkat globalisasi.",e
+"Jumlah rata-rata persediaan untuk memenuhi permintaan di antara dua pengiriman disebut... (Bab 3)","a. Safety inventory
+b. Seasonal inventory
+c. Cycle inventory
+d. Obsolete inventory
+e. Raw material inventory",c
+"Keputusan mengenai rute dan jaringan (route and network selection) adalah komponen dari pengendali... (Bab 3)","a. Facilities
+b. Inventory
+c. Transportation
+d. Sourcing
+e. Pricing",c
+"Trade-off utama secara keseluruhan (overall trade-off) dalam keputusan 'Pricing' adalah... (Bab 3)","a. Meningkatkan keuntungan rantai pasok (supply chain profits).
+b. Meningkatkan keuntungan perusahaan (increase the firm profits).
+c. Responsiveness versus efficiency.
+d. Push versus pull.
+e. Meningkatkan pangsa pasar (market share).",b
+"Apa yang dimaksud dengan 'distribusi' dalam konteks supply chain? (Bab 4)","a. Hanya proses manufaktur produk.
+b. Tahapan untuk menggerakkan dan menyimpan produk dari pemasok ke pelanggan.
+c. Aktivitas pemasaran dan promosi produk.
+d. Proses pembelian bahan baku dari pemasok.
+e. Pengelolaan hubungan dengan pelanggan.",b
+"Kinerja jaringan distribusi dievaluasi menggunakan dua dimensi utama, yaitu... (Bab 4)","a. Kecepatan pengiriman dan biaya transportasi.
+b. Kebutuhan pelanggan yang dipenuhi dan biaya untuk memenuhinya.
+c. Jumlah fasilitas dan tingkat persediaan.
+d. Variasi produk dan pengalaman pelanggan.
+e. Biaya fasilitas dan biaya informasi.",b
+"Manakah dari berikut ini yang BUKAN merupakan elemen layanan pelanggan (customer service) yang dipengaruhi oleh struktur jaringan distribusi? (Bab 4)","a. Waktu respon (Response time)
+b. Variasi produk (Product variety)
+c. Biaya produksi (Production cost)
+d. Ketersediaan produk (Product availability)
+e. Kemampuan pengembalian (Returnability)",c
+"Bagaimana hubungan antara jumlah fasilitas dengan waktu respon (response time) kepada pelanggan? (Bab 4)","a. Semakin banyak fasilitas, semakin lama waktu responnya.
+b. Jumlah fasilitas tidak mempengaruhi waktu respon.
+c. Semakin banyak fasilitas, semakin cepat waktu responnya.
+d. Hubungannya tidak dapat diprediksi.
+e. Waktu respon akan konstan setelah jumlah fasilitas tertentu.",c
+"Ketika jumlah fasilitas dalam jaringan distribusi meningkat, apa yang terjadi pada biaya persediaan (inventory costs)? (Bab 4)","a. Biaya persediaan akan menurun.
+b. Biaya persediaan akan meningkat.
+c. Biaya persediaan tidak terpengaruh.
+d. Biaya persediaan akan menurun lalu meningkat.
+e. Biaya persediaan akan meningkat lalu menurun.",b
+"Bagaimana tren biaya transportasi (transportation costs) seiring dengan bertambahnya jumlah fasilitas? (Bab 4)","a. Selalu meningkat.
+b. Selalu menurun.
+c. Awalnya menurun karena lebih dekat ke pelanggan, kemudian meningkat karena pengiriman masuk menjadi kurang efisien.
+d. Awalnya meningkat, kemudian menurun.
+e. Tidak ada perubahan yang signifikan.",c
+"Model distribusi di mana produk dikirim langsung dari pabrik ke pelanggan, seringkali difasilitasi oleh retailer online yang tidak memegang stok, disebut? (Bab 4)","a. Distributor Storage with Last Mile Delivery
+b. Retail Storage with Customer Pickup
+c. Manufacturer Storage with Direct Shipping
+d. Manufacturer or Distributor Storage with Customer Pickup
+e. Distributor Storage with Carrier Delivery",c
+"Jaringan distribusi 'In-Transit Merge' bekerja dengan cara... (Bab 4)","a. Pelanggan mengambil produk langsung dari gudang distributor.
+b. Menggabungkan pengiriman dari beberapa pabrik di fasilitas transit milik jasa pengiriman untuk dikirim bersamaan ke pelanggan.
+c. Menyimpan semua produk di toko ritel untuk diambil pelanggan.
+d. Menggunakan kurir lokal untuk pengiriman dari gudang distributor ke rumah pelanggan.
+e. Mengirimkan semua pesanan langsung dari satu pabrik saja.",b
+"Menurut tabel perbandingan (Table 4.7), model distribusi manakah yang menawarkan 'Response Time' paling cepat? (Bab 4)","a. Manufacturer Storage with Direct Shipping
+b. Distributor Storage with Last Mile Delivery
+c. Manufacturer Storage with In-Transit Merge
+d. Retail Storage with Customer Pickup
+e. Distributor storage with pickup",d
+"Model distribusi manakah yang memiliki biaya transportasi (Transportation) paling tinggi menurut tabel perbandingan (Table 4.7)? (Bab 4)","a. Retail Storage with Customer Pickup
+b. Manufacturer Storage with Direct Shipping
+c. Distributor Storage with Package Carrier Delivery
+d. Distributor Storage with Last Mile Delivery
+e. Manufacturer Storage with In-Transit Merge",d
+"Untuk produk dengan permintaan sangat rendah (very low demand product) dan variasi tinggi, model distribusi mana yang paling disarankan? (Bab 4)","a. Retail Storage with Customer Pickup
+b. Distributor Storage with Last Mile Delivery
+c. Manufacturer Storage with Direct Shipping
+d. Distributor Storage with Package Carrier Delivery
+e. Semua model sama baiknya.",c
+"Jika prioritas utama adalah meminimalkan biaya persediaan (inventory), model manakah yang paling unggul? (Bab 4)","a. Retail Storage with Customer Pickup
+b. Distributor Storage with Last Mile Delivery
+c. Manufacturer Storage with Direct Shipping
+d. Distributor Storage with Package Carrier Delivery
+e. Semuanya memiliki biaya persediaan yang sama.",c
+"Model 'Distributor Storage with Last Mile Delivery' sangat cocok untuk... (Bab 4)","a. Pengiriman produk bervolume besar dan bernilai rendah.
+b. Memenuhi permintaan yang membutuhkan waktu respon sangat cepat (misalnya, pengiriman bahan makanan).
+c. Menekan biaya transportasi hingga level terendah.
+d. Melayani pelanggan yang tidak keberatan menunggu lama.
+e. Mengurangi variasi produk yang ditawarkan.",b
+"Keunggulan utama dari model 'Retail Storage with Customer Pickup' adalah... (Bab 4)","a. Biaya inventori yang sangat rendah.
+b. Kemampuan menyediakan variasi produk yang sangat tinggi.
+c. Waktu respon yang sangat cepat dan biaya transportasi yang rendah.
+d. Kompleksitas sistem informasi yang minimal.
+e. Biaya fasilitas dan penanganan yang paling murah.",c
+"Manakah model yang paling baik dalam hal 'Product Variety' dan 'Product Availability' menurut Tabel 4.7? (Bab 4)","a. Distributor Storage with Package Carrier Delivery
+b. Retail Storage with Customer Pickup
+c. Manufacturer Storage with Direct Shipping
+d. Distributor Storage with Last Mile Delivery
+e. Manufacturer Storage with In-Transit Merge",c
+"Biaya fasilitas dan penanganan (Facility & Handling) paling tinggi terdapat pada model... (Bab 4)","a. Manufacturer Storage with Direct Shipping
+b. Distributor Storage with Last Mile Delivery
+c. Retail Storage with Customer Pickup
+d. Manufacturer Storage with In-Transit Merge
+e. Manufacturer Storage with Pickup",c
+"Model distribusi yang melibatkan 'Pickup Sites' di mana pelanggan mengambil pesanan yang dikirim dari gudang adalah... (Bab 4)","a. Manufacturer or Distributor Storage with Customer Pickup
+b. Manufacturer Storage with Direct Shipping
+c. Distributor Storage with Last Mile Delivery
+d. Retail Storage with Customer Pickup
+e. In-Transit Merge Network",a
+"Untuk produk dengan nilai yang sangat tinggi (high product value), mengapa 'Manufacturer Storage' lebih disukai? (Bab 4)","a. Karena biaya transportasinya lebih murah.
+b. Untuk memusatkan (sentralisasi) persediaan sehingga mengurangi total stok dan risiko.
+c. Karena waktu responnya lebih cepat.
+d. Karena pelanggan produk mahal tidak peduli dengan waktu pengiriman.
+e. Karena biaya fasilitasnya lebih rendah.",b
+"Peningkatan e-business telah memberikan dampak pada jaringan distribusi, terutama dalam hal... (Bab 4)","a. Mengurangi kebutuhan akan transportasi.
+b. Meningkatkan ekspektasi pelanggan terhadap kecepatan dan visibilitas pesanan.
+c. Menghilangkan biaya persediaan sepenuhnya.
+d. Membuat semua produk harus disimpan di toko ritel.
+e. Mengurangi variasi produk yang bisa ditawarkan.",b
+"Kurva 'Total Logistics Costs' menunjukkan bahwa... (Bab 4)","a. Menambah fasilitas sebanyak mungkin adalah strategi terbaik.
+b. Memiliki fasilitas sesedikit mungkin selalu paling murah.
+c. Ada jumlah fasilitas optimal yang dapat meminimalkan total biaya logistik.
+d. Biaya logistik total tidak dipengaruhi oleh jumlah fasilitas.
+e. Biaya transportasi adalah satu-satunya komponen biaya yang penting.",c
