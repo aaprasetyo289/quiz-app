@@ -397,7 +397,8 @@ SUBJECT_FILES = {
     "Manajemen dan Keberlanjutan (Mankeb)": "multichoice-uts-mankeb.csv",
     "Pemasaran Strategik (Pastra)": "multichoice-uts-pastra.csv",
     "Manajemen Rantai Pasok dan Logistik (MRPL)": "multichoice-uts-mrpl.csv",
-    "MRPL PPT Only": "multichoice-uts-mrpl-ppt-only.csv"
+    "MRPL PPT Only": "multichoice-uts-mrpl-ppt-only.csv",
+    "MRPL Study Case": "multichoice-uts-mrpl-studycase.csv"
 }
 GITHUB_BASE_URL = "https://github.com/aaprasetyo289/quiz-app/blob/main/"
 
