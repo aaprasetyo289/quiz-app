@@ -184,8 +184,9 @@ def generate_report_content(session_state):
 
 # --- DICTIONARIES AND CONSTANTS (no changes) ---
 SUBJECT_FILES = {
-    "Mankeb (Manajemen dan Keberlanjutan)": "multichoice-uts-mankeb.csv",
-    "Pastra (Pemasaran Strategik)": "multichoice-uts-pastra.csv"
+    "Manajemen dan Keberlanjutan (Mankeb)": "multichoice-uts-mankeb.csv",
+    "Pemasaran Strategik (Pastra)": "multichoice-uts-pastra.csv",
+    "Manajemen Rantai Pasok dan Logistik (MRPL)": "multichoice-uts-mrpl.csv"
 }
 GITHUB_BASE_URL = "https://github.com/aaprasetyo289/quiz-app/blob/main/"
 
@@ -341,7 +342,7 @@ elif st.session_state.quiz_started:
         if st.session_state.get('quiz_started', False):
             st.session_state.auto_next = st.toggle(
                 "Auto-Next Question",
-                value=st.session_state.get('auto_next', True),
+                value=st.session_state.get('auto_next', False),
                 help="If on, automatically moves to the next question. If off, you must click 'Next Question'."
             )
             st.divider()

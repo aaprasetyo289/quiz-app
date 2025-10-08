@@ -1,0 +1,66 @@
+Pertanyaan,Pilihan Ganda,Jawaban
+"Apa yang dimaksud dengan rantai pasok (supply chain)? (Chapter 1)","a. Rangkaian aktivitas yang hanya melibatkan produsen dan pemasok utama.
+b. Semua pihak yang terlibat secara langsung atau tidak langsung dalam memenuhi permintaan pelanggan.
+c. Proses pengiriman produk dari pabrik ke gudang.
+d. Aktivitas internal perusahaan yang berfokus pada produksi.
+e. Hanya jaringan transportasi dan logistik.","b"
+"Apa tujuan utama dari setiap rantai pasok? (Chapter 1)","a. Meminimalkan biaya transportasi di atas segalanya.
+b. Memaksimalkan keuntungan pada setiap tahap individu dalam rantai pasok.
+c. Memaksimalkan nilai keseluruhan yang dihasilkan (supply chain surplus).
+d. Mempercepat waktu pengiriman tanpa mempertimbangkan biaya.
+e. Menjaga tingkat persediaan serendah mungkin.","c"
+"Tiga fase keputusan dalam rantai pasok dikategorikan berdasarkan kerangka waktu. Apa saja ketiga fase tersebut? (Chapter 1)","a. Pembelian, Produksi, dan Penjualan.
+b. Jangka Pendek, Jangka Menengah, dan Jangka Panjang.
+c. Pemasok, Produsen, dan Pelanggan.
+d. Strategi/Desain, Perencanaan, dan Operasi.
+e. Logistik Masuk, Proses Internal, dan Logistik Keluar.","d"
+"Dalam pandangan proses rantai pasok, apa perbedaan utama antara proses 'push' dan 'pull'? (Chapter 1)","a. Proses 'push' selalu lebih murah daripada proses 'pull'.
+b. Proses 'push' diinisiasi sebagai respons terhadap pesanan pelanggan, sedangkan 'pull' diinisiasi sebagai antisipasi pesanan pelanggan.
+c. Proses 'push' diinisiasi sebagai antisipasi pesanan pelanggan, sedangkan 'pull' diinisiasi sebagai respons terhadap pesanan pelanggan.
+d. Proses 'push' hanya terjadi di tahap manufaktur, sedangkan 'pull' terjadi di tahap ritel.
+e. Proses 'pull' digunakan untuk produk inovatif, sedangkan 'push' untuk produk fungsional.","c"
+"Apa yang dimaksud dengan 'strategic fit' dalam konteks rantai pasok? (Chapter 2)","a. Kecocokan antara strategi rantai pasok dengan strategi keuangan perusahaan.
+b. Keselarasan antara strategi kompetitif perusahaan dengan kapabilitas yang dibangun oleh strategi rantai pasok.
+c. Penggunaan teknologi informasi yang sama di seluruh rantai pasok.
+d. Memastikan semua pemasok berlokasi di negara yang sama.
+e. Memiliki struktur organisasi yang ramping.","b"
+"Manakah dari pernyataan berikut yang paling akurat menggambarkan hubungan antara 'responsiveness' (daya tanggap) dan 'efficiency' (efisiensi) dalam rantai pasok? (Chapter 2)","a. Rantai pasok yang sangat responsif biasanya juga merupakan yang paling efisien.
+b. Meningkatkan efisiensi selalu mengarah pada peningkatan daya tanggap.
+c. Terdapat trade-off, di mana peningkatan daya tanggap biasanya memerlukan biaya lebih tinggi dan mengurangi efisiensi.
+d. Rantai pasok yang efisien selalu lebih disukai daripada rantai pasok yang responsif.
+e. Keduanya adalah tujuan yang dapat dimaksimalkan secara bersamaan tanpa adanya trade-off.","c"
+"Apa yang dimaksud dengan 'implied demand uncertainty' (ketidakpastian permintaan implisit)? (Chapter 2)","a. Kesalahan total dalam peramalan permintaan historis.
+b. Ketidakpastian pasokan dari pemasok.
+c. Ketidakpastian permintaan yang dibebankan pada rantai pasok karena berbagai atribut kebutuhan pelanggan yang ingin dipenuhinya (seperti waktu respons cepat atau variasi produk tinggi).
+d. Fluktuasi harga bahan baku di pasar global.
+e. Variasi dalam waktu pengiriman dari penyedia transportasi.","c"
+"Menurut buku ini, apa saja enam pendorong (drivers) kinerja rantai pasok? (Chapter 3)","a. Pemasaran, Keuangan, Sumber Daya Manusia, IT, Operasi, dan Penjualan.
+b. Fasilitas, Persediaan, Transportasi, Informasi, Sumber (Sourcing), dan Harga (Pricing).
+c. Kualitas, Kuantitas, Waktu, Biaya, Fleksibilitas, dan Inovasi.
+d. Pemasok, Produsen, Distributor, Pengecer, Pelanggan, dan Logistik.
+e. Perencanaan, Eksekusi, Pengendalian, Pengukuran, Pelaporan, dan Peningkatan.","b"
+"Apa fungsi utama dari 'safety inventory' (persediaan pengaman) dalam rantai pasok? (Chapter 3)","a. Untuk memenuhi permintaan selama satu siklus pengisian ulang (replenishment cycle).
+b. Untuk mengambil keuntungan dari diskon pembelian dalam jumlah besar.
+c. Untuk mengantisipasi variabilitas permintaan musiman yang dapat diprediksi.
+d. Untuk dipegang jika permintaan aktual melebihi jumlah yang diramalkan (untuk mengatasi ketidakpastian).
+e. Untuk mengurangi biaya transportasi dengan memungkinkan pengiriman dalam jumlah besar.","d"
+"Hukum Little (Little's Law) mendefinisikan hubungan antara persediaan (I), waktu alir (T), dan throughput (D). Manakah rumus yang benar? (Chapter 3)","a. D = I x T
+b. T = I x D
+c. I = D / T
+d. T = D / I
+e. I = D x T","e"
+"Kinerja jaringan distribusi dievaluasi berdasarkan dua dimensi utama. Apa saja kedua dimensi tersebut? (Chapter 4)","a. Jumlah gudang dan kecepatan pengiriman.
+b. Biaya persediaan dan biaya fasilitas.
+c. Nilai yang diberikan kepada pelanggan dan biaya untuk memenuhi kebutuhan pelanggan.
+d. Variasi produk dan ketersediaan produk.
+e. Jarak dari pemasok dan kepadatan pelanggan.","c"
+"Manakah dari opsi desain jaringan distribusi berikut yang paling cocok untuk produk dengan nilai tinggi, permintaan rendah, dan permintaan yang tidak dapat diprediksi? (Chapter 4)","a. Retail storage with customer pickup (Penyimpanan ritel dengan pengambilan oleh pelanggan).
+b. Distributor storage with last-mile delivery (Penyimpanan distributor dengan pengiriman jarak akhir).
+c. Manufacturer storage with direct shipping / drop-shipping (Penyimpanan produsen dengan pengiriman langsung).
+d. Distributor storage with carrier delivery (Penyimpanan distributor dengan pengiriman oleh kurir).
+e. Semua opsi sama baiknya.","c"
+"Dibandingkan dengan toko ritel fisik, bagaimana penjualan online untuk produk fisik (non-digital) biasanya mempengaruhi biaya transportasi dan waktu respons pelanggan? (Chapter 4)","a. Menurunkan biaya transportasi dan mempercepat waktu respons.
+b. Meningkatkan biaya transportasi dan memperlambat waktu respons.
+c. Menurunkan biaya transportasi tetapi memperlambat waktu respons.
+d. Meningkatkan biaya transportasi tetapi mempercepat waktu respons.
+e. Tidak mempengaruhi keduanya secara signifikan.","b"
