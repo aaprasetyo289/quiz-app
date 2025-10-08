@@ -2,3 +2,4 @@ streamlit
 pandas
 google-cloud-firestore
 streamlit-local-storage
+googletrans==4.0.0-rc1

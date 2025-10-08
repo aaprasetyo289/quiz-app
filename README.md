@@ -2,13 +2,12 @@
 
 A web-based quiz application built with Streamlit to help students study for university/school subjects. It app allows users to take customizable quizzes, save their progress, and review their answers.
 
-
 This is a personal project of mine originally created to help friends study for midterms.
 
-
-The app is hosted on Streamlit at https://quiz-app289.streamlit.app/.
+The app is hosted on Streamlit [which you can access here](https://quiz-app289.streamlit.app/).
 
 ## Usage
+
 1. Select a Subject: Choose between the available subjects to start.
 
 2. Configure Quiz: Set the number of questions and randomization preference. You can also view the source questions on GitHub from this screen.

@@ -117,5 +117,10 @@ LANGUAGES = {
 def get_lang():
     """Returns the dictionary of strings for the currently selected language."""
     if 'lang' not in st.session_state:
-        st.session_state.lang = "EN"  # Default language
+        st.session_state.lang = "ID"  # Default language
+        
+        # For machine-translated languages, use English strings for the UI
+        if st.session_state.lang.startswith("ZH-CN"):
+            return LANGUAGES["EN"]
+
     return LANGUAGES[st.session_state.lang]

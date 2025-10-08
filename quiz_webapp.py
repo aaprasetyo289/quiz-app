@@ -3,7 +3,12 @@ import pandas as pd
 import random
 import time
 from google.cloud import firestore
+from googletrans import Translator
 from streamlit_local_storage import LocalStorage
+
+import languages
+# Gets correct dictionary based on session state
+lang = languages.get_lang()
 
 # --- CONSTANTS ---
 # Save code generation
@@ -69,6 +74,22 @@ def restore_session_from_code(code, resume_timer=True):
             st.session_state.start_time = time.time()
         return True
     return False
+
+@st.cache_data
+def translate_text(text, dest_lang, src_lang='id'):
+    """Translates text using Google Translate and caches the result."""
+    # Don't translate if the text is empty or languages are the same
+    if not isinstance(text, str) or not text.strip() or dest_lang == src_lang:
+        return text
+    try:
+        # Re-initialise translator for caching compatibility
+        translator = Translator()
+        translated = translator.translate(text, dest=dest_lang, src=src_lang)
+        return translated.text
+    except Exception as e:
+        # On error, return the original text
+        st.error(f"Translation Error: {e}", icon="🌐")
+        return text
 
 # --- Firestore Connection ---
 @st.cache_resource
@@ -337,6 +358,18 @@ elif st.session_state.subject_chosen and not st.session_state.quiz_started:
 elif st.session_state.quiz_started:
     # --- Sidebar ---
     with st.sidebar:
+        st.header(lang["settings_header"])
+        # Determine the index for the radio button based on the current language
+        lang_options = list("EN", "ID", "ZH-CN")
+        current_lang_index = lang_options.index(st.session_state.lang)
+        
+        # The radio button's state is directly tied to st.session_state.lang
+        st.session_state.lang = st.radio(
+            "Language / Bahasa",
+            lang_options,
+            index=current_lang_index
+        )
+        
         st.header("⚙️ Settings")
         # Only show quiz-specific settings if the quiz has started
         if st.session_state.get('quiz_started', False):
