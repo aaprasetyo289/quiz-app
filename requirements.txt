@@ -2,3 +2,5 @@ streamlit
 pandas
 google-cloud-firestore
 streamlit-local-storage
+googletrans==4.0.2
+nest-asyncio

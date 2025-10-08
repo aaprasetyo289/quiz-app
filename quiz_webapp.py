@@ -4,6 +4,14 @@ import random
 import time
 from google.cloud import firestore
 from streamlit_local_storage import LocalStorage
+from googletrans import Translator
+from functools import lru_cache
+import traceback
+import asyncio
+import nest_asyncio
+
+# Apply nest_asyncio to allow nested event loops in Streamlit
+nest_asyncio.apply()
 
 # --- CONSTANTS ---
 # Save code generation
@@ -28,14 +36,166 @@ GRADE_THRESHOLDS = {
 
 # Session state keys to save
 STATE_KEYS_TO_SAVE = [
-    'subject_chosen', 'quiz_started', 'selected_subject',
-    'questions', 'current_question_index', 'score', 'auto_next',
+    'session_id', 'selected_subject', 'questions', 'original_questions', 'translated_questions_cache',
+    'current_question_index', 'score', 'auto_next',
     'answer_submitted', 'last_choice', 'scored', 'timer_enabled',
-    'show_timer', 'time_elapsed_before_pause', 'answer_history'
+    'show_timer', 'time_elapsed_before_pause', 'answer_history', 'language', 'previous_language'
 ]
+
+# --- TRANSLATION CONSTANTS ---
+DEFAULT_LANGUAGE = "id"  # Indonesian as default (source language)
+
+AVAILABLE_LANGUAGES = {
+    "id": "🇮🇩 Bahasa Indonesia (Original)",
+    "en": "🇬🇧 English",
+    "es": "🇪🇸 Español",
+    "fr": "🇫🇷 Français",
+    "de": "🇩🇪 Deutsch",
+    "zh-cn": "🇨🇳 简体中文",
+    "ja": "🇯🇵 日本語",
+    "ko": "🇰🇷 한국어",
+    "ar": "🇸🇦 العربية",
+    "pt": "🇵🇹 Português",
+}
 
 # --- Initialise Local Storage ---
 localS = LocalStorage()
+
+# --- TRANSLATION FUNCTIONS (ASYNC OPTIMIZED) ---
+@st.cache_resource
+def get_translator():
+    """Initialize and cache the Google Translator instance."""
+    return Translator()
+
+async def translate_text_async(translator, text, src_lang, dest_lang):
+    """Async function to translate a single text."""
+    try:
+        result = await translator.translate(text, src=src_lang, dest=dest_lang)
+        return result.text if result and hasattr(result, 'text') and result.text else text
+    except Exception:
+        # Return original text on error
+        return text
+
+async def translate_batch_async(translator, texts, src_lang, dest_lang):
+    """Async function to translate multiple texts concurrently."""
+    # Create tasks for all translations
+    tasks = [translate_text_async(translator, text, src_lang, dest_lang) for text in texts]
+    
+    # Execute all translations concurrently
+    results = await asyncio.gather(*tasks)
+    return results
+
+def translate_questions_smart(questions, target_lang):
+    """
+    Translates questions ONLY if target language is different from Indonesian.
+    Uses async batch translation for maximum efficiency.
+    Returns original questions if target is Indonesian.
+    """
+    if target_lang == "id":
+        return questions
+    
+    # Check if we already have this translation cached
+    cache_key = f"translated_{target_lang}"
+    if cache_key in st.session_state.get('translated_questions_cache', {}):
+        return st.session_state.translated_questions_cache[cache_key]
+    
+    try:
+        translator = get_translator()
+        
+        # Collect all texts to translate
+        all_texts = []
+        for q in questions:
+            all_texts.append(q['question'])
+            all_texts.extend(q['options'])
+        
+        # Async batch translate with retry logic
+        with st.spinner(f"🔄 Translating {len(questions)} questions to {AVAILABLE_LANGUAGES[target_lang]}..."):
+            max_retries = 3
+            translated_texts = None
+            
+            for attempt in range(max_retries):
+                try:
+                    # Run async translation
+                    translated_texts = asyncio.run(translate_batch_async(
+                        translator, all_texts, 'id', target_lang
+                    ))
+                    
+                    # Verify we got all results
+                    if translated_texts and len(translated_texts) == len(all_texts):
+                        # Check if any translations failed (returned original text)
+                        success_count = sum(1 for orig, trans in zip(all_texts, translated_texts) if orig != trans)
+                        
+                        if success_count > 0:
+                            # At least some translations succeeded
+                            break
+                        else:
+                            # All translations returned original text (likely API issue)
+                            raise ValueError("No texts were translated")
+                    else:
+                        raise ValueError("Incomplete translation results")
+                        
+                except Exception as e:
+                    if attempt < max_retries - 1:
+                        st.warning(f"⚠️ Translation attempt {attempt + 1} failed: {str(e)[:100]}. Retrying...")
+                        time.sleep(1)
+                        translator = Translator()  # Create new translator instance
+                    else:
+                        st.error(f"❌ Translation failed after {max_retries} attempts: {str(e)[:100]}")
+                        st.info("💡 Tip: The Google Translate API can be unstable. Try refreshing or wait a moment.")
+                        return questions
+            
+            if not translated_texts or len(translated_texts) != len(all_texts):
+                st.error("❌ Translation failed. Using Indonesian.")
+                return questions
+        
+        # Reconstruct questions
+        translated_questions = []
+        idx = 0
+        for q in questions:
+            num_options = len(q['options'])
+            translated_q = {
+                'question': translated_texts[idx],
+                'options': translated_texts[idx+1:idx+1+num_options],
+                'answer': q['answer']  # Keep answer letter same
+            }
+            translated_questions.append(translated_q)
+            idx += 1 + num_options
+        
+        # Cache the translation
+        if 'translated_questions_cache' not in st.session_state:
+            st.session_state.translated_questions_cache = {}
+        st.session_state.translated_questions_cache[cache_key] = translated_questions
+        
+        st.success(f"✅ Successfully translated {len(questions)} questions!")
+        
+        return translated_questions
+        
+    except Exception as e:
+        st.error(f"❌ Translation error: {e}")
+        st.error(f"Full traceback:\n{traceback.format_exc()}")
+        st.info("💡 Tip: Try selecting a different language or refresh the page.")
+        return questions
+
+def update_questions_for_language():
+    """
+    Updates displayed questions when language changes.
+    Only translates if necessary.
+    """
+    if 'original_questions' not in st.session_state:
+        st.warning("⚠️ No original questions found. Please start a new quiz.")
+        return
+    
+    current_lang = st.session_state.get('language', DEFAULT_LANGUAGE)
+    
+    # If Indonesian, use original
+    if current_lang == 'id':
+        st.session_state.questions = st.session_state.original_questions
+    else:
+        # Translate if needed
+        st.session_state.questions = translate_questions_smart(
+            st.session_state.original_questions,
+            current_lang
+        )
 
 # --- Helper Functions ---
 def format_time(seconds):
@@ -223,6 +383,9 @@ st.title("📚 Quiz App")
 if 'subject_chosen' not in st.session_state:
     st.session_state.subject_chosen = False
     st.session_state.quiz_started = False
+if 'language' not in st.session_state:
+    st.session_state.language = DEFAULT_LANGUAGE
+    st.session_state.previous_language = DEFAULT_LANGUAGE
 
 # --- Screen 1: Subject Selection & Load ---
 if not st.session_state.subject_chosen:    
@@ -297,8 +460,8 @@ elif st.session_state.subject_chosen and not st.session_state.quiz_started:
         
         st.divider()
         st.subheader("⏱️ Timer Options")
-        timer_enabled = st.toggle("Enable Timer?", value=True)
-        show_timer = st.toggle("Show Timer on Screen?", value=True)
+        timer_enabled = st.toggle("Enable Timer?", value=False)
+        show_timer = st.toggle("Show Timer on Screen?", value=False)
 
         col1, col2 = st.columns(2)
         with col1:
@@ -309,7 +472,22 @@ elif st.session_state.subject_chosen and not st.session_state.quiz_started:
                 
                 session_id = generate_save_code()
                 st.session_state.session_id = session_id
-                st.session_state.questions = all_questions[:num_questions]
+                
+                # Store ORIGINAL questions (Indonesian)
+                st.session_state.original_questions = all_questions[:num_questions]
+                
+                # Initialize translation cache
+                st.session_state.translated_questions_cache = {}
+                
+                # Initialize language tracking
+                if 'language' not in st.session_state:
+                    st.session_state.language = DEFAULT_LANGUAGE
+                if 'previous_language' not in st.session_state:
+                    st.session_state.previous_language = DEFAULT_LANGUAGE
+                
+                # Set displayed questions based on current language
+                update_questions_for_language()
+                
                 st.session_state.current_question_index = 0
                 st.session_state.answer_history = [] 
                 st.session_state.timer_enabled = timer_enabled
@@ -337,6 +515,77 @@ elif st.session_state.subject_chosen and not st.session_state.quiz_started:
 elif st.session_state.quiz_started:
     # --- Sidebar ---
     with st.sidebar:
+        # Language Selector
+        st.header("🌍 Language / Bahasa")
+        
+        # Get current language from session state
+        if 'language' not in st.session_state:
+            st.session_state.language = DEFAULT_LANGUAGE
+        
+        current_lang = st.session_state.language
+        
+        # Find index
+        try:
+            current_index = list(AVAILABLE_LANGUAGES.keys()).index(current_lang)
+        except ValueError:
+            current_index = 0
+        
+        # Callback function for language change
+        def on_language_change():
+            new_lang = st.session_state.language_selector_widget
+            old_lang = st.session_state.get('language', DEFAULT_LANGUAGE)
+            
+            # Debug logging
+            st.session_state.debug_callback_fired = True
+            st.session_state.debug_new_lang = new_lang
+            st.session_state.debug_old_lang = old_lang
+            
+            if new_lang != old_lang:
+                st.session_state.language = new_lang
+                st.session_state.translation_triggered = True
+                try:
+                    update_questions_for_language()
+                    st.session_state.translation_success = True
+                except Exception as e:
+                    st.session_state.translation_error = str(e)
+                    st.session_state.translation_success = False
+        
+        # Use selectbox WITH a key and on_change callback
+        st.selectbox(
+            "Select Language",
+            options=list(AVAILABLE_LANGUAGES.keys()),
+            format_func=lambda x: AVAILABLE_LANGUAGES[x],
+            index=current_index,
+            key="language_selector_widget",
+            on_change=on_language_change,
+            label_visibility="collapsed"
+        )
+        
+        # Debug info
+        if 0 > 1:
+            with st.expander("🔍 Debug Info"):
+                st.write(f"Current language: {st.session_state.language}")
+                st.write(f"Selector widget value: {st.session_state.get('language_selector_widget', 'NOT SET')}")
+                st.write(f"Callback fired: {st.session_state.get('debug_callback_fired', False)}")
+                if st.session_state.get('debug_callback_fired', False):
+                    st.write(f"  - New lang in callback: {st.session_state.get('debug_new_lang', 'N/A')}")
+                    st.write(f"  - Old lang in callback: {st.session_state.get('debug_old_lang', 'N/A')}")
+                    st.write(f"  - Translation triggered: {st.session_state.get('translation_triggered', False)}")
+                    if st.session_state.get('translation_success') is not None:
+                        st.write(f"  - Translation success: {st.session_state.get('translation_success', False)}")
+                    if st.session_state.get('translation_error'):
+                        st.write(f"  - Translation error: {st.session_state.get('translation_error', 'None')}")
+                st.write(f"Has original_questions: {'original_questions' in st.session_state}")
+                st.write(f"Has questions: {'questions' in st.session_state}")
+                if 'questions' in st.session_state and len(st.session_state.questions) > 0:
+                    st.write(f"First question: {st.session_state.questions[0]['question'][:50]}...")
+                st.write(f"Cache keys: {list(st.session_state.get('translated_questions_cache', {}).keys())}")
+        
+        if st.session_state.language != "id":
+            st.caption("🤖 Powered by Google Translate")
+        
+        st.divider()
+        
         st.header("⚙️ Settings")
         # Only show quiz-specific settings if the quiz has started
         if st.session_state.get('quiz_started', False):
@@ -428,6 +677,7 @@ elif st.session_state.quiz_started:
         with st.expander("🧐 Review Your Answers"):
             for i, entry in enumerate(st.session_state.answer_history):
                 q_data = entry["question_data"]
+                
                 st.subheader(f"Question {i+1}: {q_data['question']}")
 
                 if entry['is_correct']:
@@ -439,6 +689,7 @@ elif st.session_state.quiz_started:
                         (opt for opt in q_data['options'] if opt.lower().strip().startswith(correct_answer_char)),
                         "N/A"
                     )
+                    
                     st.error(f"✗ Your answer: {entry['user_choice']}")
                     st.info(f"Correct answer: {correct_answer_full}")
                 
@@ -481,6 +732,8 @@ elif st.session_state.quiz_started:
         # Display using st.metric for a nice visual
         st.metric(label="Current Score", value=f"{percentage:.1f}%")
         st.write(f"You have answered **{current_score}** of **{questions_answered}** questions correctly.")
+        
+        # Display question and options (already translated if needed)
         st.header(q_data['question'])
 
         user_choice = st.radio("Choose your answer:", q_data['options'], key=f"q_{st.session_state.current_question_index}", index=None, disabled=st.session_state.answer_submitted)
@@ -525,7 +778,7 @@ elif st.session_state.quiz_started:
                 if 'session_id' in st.session_state:
                     save_state(st.session_state.session_id, st.session_state)
                 #    st.toast(f"Autosaved session: {st.session_state.session_id}", icon="💾")  
-                st.rerun()
+                    st.rerun()
             else:
                 if st.button("Next Question"):
                     st.session_state.current_question_index += 1
