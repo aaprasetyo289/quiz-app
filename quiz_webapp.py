@@ -39,8 +39,7 @@ STATE_KEYS_TO_SAVE = [
     'session_id', 'selected_subject', 'questions', 'original_questions', 'translated_questions_cache',
     'current_question_index', 'score', 'auto_next',
     'answer_submitted', 'last_choice', 'scored', 'timer_enabled',
-    'show_timer', 'time_elapsed_before_pause', 'answer_history', 'language', 'previous_language',
-    'user_name'  # Added to persist user name
+    'show_timer', 'time_elapsed_before_pause', 'answer_history', 'language', 'previous_language'
 ]
 
 # --- TRANSLATION CONSTANTS ---
@@ -253,52 +252,9 @@ if 'session_id' not in st.session_state:
 localS.setItem('session_id', st.session_state.session_id)
 
 # --- Helper Functions for Saving and Loading ---
-def generate_save_code(user_name=None):
-    """Generates a save code based on user name and random number."""
-    if not user_name:
-        # Fallback to old method if no name provided
-        return f"{random.choice(SAVE_CODE_WORDS)}-{random.choice(SAVE_CODE_WORDS)}-{random.randint(10, 99)}"
-    
-    # Sanitize name: remove spaces, special chars, convert to uppercase
-    clean_name = ''.join(c for c in user_name if c.isalnum()).upper()
-    if not clean_name:
-        # If name becomes empty after cleaning, use fallback
-        return f"{random.choice(SAVE_CODE_WORDS)}-{random.choice(SAVE_CODE_WORDS)}-{random.randint(10, 99)}"
-    
-    # Limit name to 15 characters
-    clean_name = clean_name[:15]
-    
-    # Generate random 5-digit number
-    random_num = random.randint(10000, 99999)
-    
-    return f"{clean_name}-{random_num}"
-
-def check_code_exists(code):
-    """Check if a save code already exists in Firestore."""
-    try:
-        db = firestore.Client()
-        doc_ref = db.collection('quiz_sessions').document(code)
-        doc = doc_ref.get()
-        return doc.exists
-    except Exception:
-        # If Firestore check fails, assume code doesn't exist
-        return False
-
-def generate_unique_save_code(user_name=None):
-    """Generate a unique save code that doesn't exist in Firestore."""
-    max_attempts = 10
-    for _ in range(max_attempts):
-        code = generate_save_code(user_name)
-        if not check_code_exists(code):
-            return code
-    
-    # If we can't find a unique code after max_attempts, append timestamp
-    if user_name:
-        clean_name = ''.join(c for c in user_name if c.isalnum()).upper()[:15]
-        timestamp = int(time.time()) % 100000  # Last 5 digits of timestamp
-        return f"{clean_name}-{timestamp}"
-    else:
-        return f"{random.choice(SAVE_CODE_WORDS)}-{random.choice(SAVE_CODE_WORDS)}-{random.randint(10, 99)}"
+def generate_save_code():
+    """Generates a simple, memorable save code."""
+    return f"{random.choice(SAVE_CODE_WORDS)}-{random.choice(SAVE_CODE_WORDS)}-{random.randint(10, 99)}"
 
 def save_state(code, session_state):
     """Saves the essential quiz state to Firestore, filtering out widget keys."""
@@ -430,31 +386,9 @@ if 'subject_chosen' not in st.session_state:
 if 'language' not in st.session_state:
     st.session_state.language = DEFAULT_LANGUAGE
     st.session_state.previous_language = DEFAULT_LANGUAGE
-if 'user_name' not in st.session_state:
-    st.session_state.user_name = ""
 
 # --- Screen 1: Subject Selection & Load ---
-if not st.session_state.subject_chosen:
-    # --- Name Input Section ---
-    st.subheader("👤 Welcome!")
-    
-    user_name_input = st.text_input(
-        "Enter your name (optional, but recommended for personalized save codes)",
-        value=st.session_state.get('user_name', ''),
-        placeholder="e.g., John Doe",
-        help="Your name will be used to generate a personalized save code like JOHNDOE-12345",
-        key="name_input_field"
-    )
-    
-    # Update session state when name changes
-    if user_name_input != st.session_state.user_name:
-        st.session_state.user_name = user_name_input
-    
-    if st.session_state.user_name:
-        st.success(f"✅ Welcome, {st.session_state.user_name}!")
-    
-    st.divider()
-    
+if not st.session_state.subject_chosen:    
     # --- Resume Autosave Section --- #
     # Call the component to trigger retrieval from the browser's local storage.
     # Only show the "Resume" section if a valid session ID was actually found.
@@ -504,7 +438,6 @@ elif st.session_state.subject_chosen and not st.session_state.quiz_started:
     # Load questions for the selected subject
     csv_file = SUBJECT_FILES[st.session_state.selected_subject]
     all_questions = load_questions(csv_file)
-    total_questions = len(all_questions)
     
     if not all_questions:
         st.error("Failed to load questions. Please go back and try again.")
@@ -512,14 +445,14 @@ elif st.session_state.subject_chosen and not st.session_state.quiz_started:
             st.session_state.subject_chosen = False
             st.rerun()
     else:
-        st.write(f"Total questions available: **{total_questions}**")
+        st.write(f"Total questions available: **{len(all_questions)}**")
         
         # Configuration options
         num_questions = st.number_input(
             "How many questions do you want?",
             min_value=1,
-            max_value=total_questions,
-            value=min(10, total_questions),
+            max_value=len(all_questions),
+            value=min(10, len(all_questions)),
             step=1
         )
         
@@ -537,9 +470,7 @@ elif st.session_state.subject_chosen and not st.session_state.quiz_started:
                 if randomize:
                     random.shuffle(all_questions)
                 
-                # Generate unique save code with user's name
-                user_name = st.session_state.get('user_name', '')
-                session_id = generate_unique_save_code(user_name if user_name else None)
+                session_id = generate_save_code()
                 st.session_state.session_id = session_id
                 
                 # Store ORIGINAL questions (Indonesian)
@@ -666,16 +597,15 @@ elif st.session_state.quiz_started:
             st.divider()
             st.header("💾 Save and Load")
             if st.button("Save Progress"):
-                # Generate unique save code with user's name
-                user_name = st.session_state.get('user_name', '')
-                save_code = generate_unique_save_code(user_name if user_name else None)
-                
+                while True:
+                    save_code = generate_save_code()
+                    if load_state(save_code) is None:
+                    # This code is unique, so we can exit the loop.
+                        break
                 save_state(save_code, st.session_state)
                 st.info("Your progress has been saved!")
                 st.success(f"Your save code is: **{save_code}**")
                 st.warning("Copy this code to resume later.")
-                if user_name:
-                    st.caption(f"💡 Your code includes your name: {user_name}")
                   # --- NEW: Load feature inside an expander ---
             with st.expander("Load a Quiz (Discards Current Progress)"):
                 resume_code = st.text_input("Enter save code", key="sidebar_resume_code")
