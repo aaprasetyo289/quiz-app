@@ -19,6 +19,106 @@ b. Proses 'push' diinisiasi sebagai respons terhadap pesanan pelanggan, sedangka
 c. Proses 'push' diinisiasi sebagai antisipasi pesanan pelanggan, sedangkan 'pull' diinisiasi sebagai respons terhadap pesanan pelanggan.
 d. Proses 'push' hanya terjadi di tahap manufaktur, sedangkan 'pull' terjadi di tahap ritel.
 e. Proses 'pull' digunakan untuk produk inovatif, sedangkan 'push' untuk produk fungsional.","c"
+"Apa yang dimaksud dengan rantai pasok (supply chain)? (Chapter 1)","a. Hanya proses pengiriman produk dari produsen ke pelanggan.
+b. Semua fungsi di dalam sebuah perusahaan manufaktur.
+c. Semua pihak yang terlibat secara langsung atau tidak langsung dalam memenuhi permintaan pelanggan.
+d. Jaringan transportasi yang digunakan untuk mendistribusikan barang.
+e. Hanya produsen dan pemasok bahan baku.","c"
+"Apa tujuan utama dari setiap rantai pasok? (Chapter 1)","a. Meminimalkan biaya transportasi.
+b. Memaksimalkan keuntungan di setiap tahap individu.
+c. Memaksimalkan nilai keseluruhan yang dihasilkan (supply chain surplus).
+d. Meminimalkan tingkat persediaan.
+e. Mempercepat pengiriman produk.","c"
+"Tiga fase keputusan dalam rantai pasok dikategorikan berdasarkan kerangka waktu. Apa saja ketiga fase tersebut? (Chapter 1)","a. Desain, Produksi, Distribusi.
+b. Pemasaran, Operasi, Keuangan.
+c. Strategi/Desain, Perencanaan, Operasi.
+d. Jangka Pendek, Jangka Menengah, Jangka Panjang.
+e. Pemasok, Produsen, Pelanggan.","c"
+"Dalam pandangan proses rantai pasok, apa perbedaan utama antara proses 'push' dan 'pull'? (Chapter 1)","a. Proses 'push' untuk produk mahal, 'pull' untuk produk murah.
+b. Proses 'push' diinisiasi sebagai antisipasi pesanan pelanggan, sedangkan 'pull' diinisiasi sebagai respons terhadap pesanan pelanggan.
+c. Proses 'push' terjadi di hulu, 'pull' terjadi di hilir.
+d. Proses 'pull' lebih efisien, 'push' lebih responsif.
+e. Proses 'push' menggunakan transportasi darat, 'pull' menggunakan udara.","b"
+"Apa satu-satunya sumber pendapatan (revenue) dalam sebuah rantai pasok? (Chapter 1)","a. Produsen.
+b. Pemasok.
+c. Pemerintah.
+d. Pelanggan.
+e. Distributor.","d"
+"Aliran apa saja yang terjadi secara konstan di dalam sebuah rantai pasok? (Chapter 1)","a. Hanya aliran produk.
+b. Hanya aliran produk dan uang.
+c. Aliran informasi, produk, dan dana (funds).
+d. Aliran pesanan dan faktur.
+e. Aliran bahan baku dan barang jadi.","c"
+"Keputusan untuk menentukan lokasi dan kapasitas fasilitas produksi dan pergudangan termasuk dalam fase keputusan apa? (Chapter 1)","a. Fase Operasi.
+b. Fase Perencanaan.
+c. Fase Strategi atau Desain.
+d. Fase Eksekusi.
+e. Fase Pemasaran.","c"
+"Mengalokasikan persediaan atau produksi ke pesanan pelanggan individu termasuk dalam fase keputusan apa? (Chapter 1)","a. Fase Operasi.
+b. Fase Perencanaan.
+c. Fase Strategi atau Desain.
+d. Fase Keuangan.
+e. Fase Pengembangan Produk.","a"
+"Dalam pandangan siklus (cycle view) rantai pasok, siklus apa yang terjadi antara pengecer (retailer) dan pelanggan? (Chapter 1)","a. Siklus Pengisian Ulang (Replenishment Cycle).
+b. Siklus Manufaktur (Manufacturing Cycle).
+c. Siklus Pengadaan (Procurement Cycle).
+d. Siklus Pesanan Pelanggan (Customer Order Cycle).
+e. Siklus Distribusi (Distribution Cycle).","d"
+"Proses yang diklasifikasikan sebagai 'proses spekulatif' adalah nama lain untuk... (Chapter 1)","a. Proses Pull.
+b. Proses Push.
+c. Proses Manufaktur.
+d. Proses Pengiriman.
+e. Proses Retur.","b"
+"Semua proses rantai pasok dapat diklasifikasikan ke dalam tiga proses makro. Mana yang BUKAN salah satunya? (Chapter 1)","a. Customer Relationship Management (CRM).
+b. Internal Supply Chain Management (ISCM).
+c. Supplier Relationship Management (SRM).
+d. Financial Transaction Management (FTM).
+e. Semua jawaban di atas adalah proses makro.","d"
+"Manajemen pesanan dan manajemen call center adalah bagian dari proses makro mana? (Chapter 1)","a. Customer Relationship Management (CRM).
+b. Internal Supply Chain Management (ISCM).
+c. Supplier Relationship Management (SRM).
+d. Perencanaan Produksi.
+e. Manajemen Transportasi.","a"
+"Mengapa istilah 'jaringan pasok' (supply network) seringkali lebih akurat daripada 'rantai pasok' (supply chain)? (Chapter 1)","a. Karena teknologi modern menghubungkan semuanya seperti jaring.
+b. Karena satu produsen mungkin menerima bahan dari beberapa pemasok dan menyuplai ke beberapa distributor.
+c. Karena produk bisa dikembalikan (retur) ke arah hulu.
+d. Karena rantai pasok adalah istilah yang sudah usang.
+e. Karena ada aliran dana selain aliran produk.","b"
+"Bagaimana 'supply chain surplus' dihitung? (Chapter 1)","a. Total Pendapatan - Total Biaya Rantai Pasok.
+b. Nilai Produk bagi Pelanggan - Harga yang Dibayar Pelanggan.
+c. Nilai Produk bagi Pelanggan - Total Biaya yang Dikeluarkan Rantai Pasok.
+d. Keuntungan Produsen + Keuntungan Pengecer.
+e. Harga Jual - Biaya Produksi.","c"
+"Menurut contoh dalam buku, apa salah satu alasan utama kegagalan Webvan dalam bisnis grosir online? (Chapter 1)","a. Kualitas produk yang buruk.
+b. Desain situs web yang tidak ramah pengguna.
+c. Biaya transportasi dan tenaga kerja untuk pengiriman ke rumah yang sangat tinggi dibandingkan supermarket tradisional.
+d. Kurangnya variasi produk yang ditawarkan.
+e. Harga jual yang terlalu mahal.","c"
+"Fase Perencanaan (Planning Phase) dalam rantai pasok biasanya memiliki kerangka waktu... (Chapter 1)","a. Mingguan atau harian.
+b. Beberapa tahun.
+c. Satu kuartal hingga satu tahun.
+d. Hanya pada saat peluncuran produk baru.
+e. Satu dekade.","c"
+"Dalam pandangan siklus, siklus apa yang terjadi di antarmuka antara produsen dan pemasoknya? (Chapter 1)","a. Siklus Pesanan Pelanggan (Customer Order Cycle).
+b. Siklus Pengisian Ulang (Replenishment Cycle).
+c. Siklus Manufaktur (Manufacturing Cycle).
+d. Siklus Pengadaan (Procurement Cycle).
+e. Siklus Penjualan (Sales Cycle).","d"
+"Proses apa yang memisahkan proses 'push' dari 'pull' di dalam rantai pasok? (Chapter 1)","a. Pengiriman dari pemasok.
+b. Kedatangan pesanan pelanggan.
+c. Proses produksi di pabrik.
+d. Keputusan penetapan harga.
+e. Pengiriman ke distributor.","b"
+"Evaluasi dan pemilihan pemasok adalah bagian dari proses makro mana? (Chapter 1)","a. Internal Supply Chain Management (ISCM).
+b. Customer Relationship Management (CRM).
+c. Supplier Relationship Management (SRM).
+d. Manajemen Persediaan.
+e. Manajemen Fasilitas.","c"
+"Menurut contoh dalam buku, strategi rantai pasok Zara yang sangat responsif memberikannya keuntungan berupa... (Chapter 1)","a. Biaya produksi terendah di industri.
+b. Kemampuan untuk mengubah desain dan barang dagangan dengan cepat untuk mencocokkan preferensi pelanggan.
+c. Jaringan toko terbesar di dunia.
+d. Ketergantungan pada satu pemasok besar.
+e. Memegang persediaan dalam jumlah yang sangat besar.","b"
 "Apa yang dimaksud dengan 'strategic fit' dalam konteks rantai pasok? (Chapter 2)","a. Kecocokan antara strategi rantai pasok dengan strategi keuangan perusahaan.
 b. Keselarasan antara strategi kompetitif perusahaan dengan kapabilitas yang dibangun oleh strategi rantai pasok.
 c. Penggunaan teknologi informasi yang sama di seluruh rantai pasok.
@@ -34,6 +134,107 @@ b. Ketidakpastian pasokan dari pemasok.
 c. Ketidakpastian permintaan yang dibebankan pada rantai pasok karena berbagai atribut kebutuhan pelanggan yang ingin dipenuhinya (seperti waktu respons cepat atau variasi produk tinggi).
 d. Fluktuasi harga bahan baku di pasar global.
 e. Variasi dalam waktu pengiriman dari penyedia transportasi.","c"
+Pertanyaan,Pilihan Ganda,Jawaban
+"Apa yang didefinisikan oleh 'strategi kompetitif' (competitive strategy) sebuah perusahaan? (Chapter 2)","a. Proses-proses internal yang akan di-outsource.
+b. Anggaran tahunan untuk setiap departemen fungsional.
+c. Sekumpulan kebutuhan pelanggan yang ingin dipenuhi oleh perusahaan melalui produk dan layanannya, relatif terhadap para pesaingnya.
+d. Struktur jaringan logistik dan transportasi.
+e. Portofolio produk baru yang akan dikembangkan.","c"
+"Apa yang dimaksud dengan 'strategi rantai pasok' (supply chain strategy)? (Chapter 2)","a. Cara perusahaan akan mengiklankan produknya.
+b. Menentukan sifat pengadaan bahan baku, transportasi, manufaktur, dan distribusi produk ke pelanggan.
+c. Strategi penetapan harga untuk setiap segmen pasar.
+d. Kebijakan sumber daya manusia untuk pekerja pabrik.
+e. Rencana keuangan untuk investasi modal.","b"
+"Apa syarat utama untuk mencapai 'strategic fit' dalam rantai pasok? (Chapter 2)","a. Memiliki teknologi rantai pasok yang paling canggih.
+b. Baik strategi kompetitif maupun strategi rantai pasok harus memiliki tujuan yang selaras.
+c. Selalu memilih pemasok dengan harga terendah.
+d. Memiliki jumlah gudang yang paling banyak.
+e. Mengoperasikan rantai pasok dengan biaya seminimal mungkin.","b"
+"Apa langkah pertama yang harus dilakukan perusahaan untuk mencapai 'strategic fit'? (Chapter 2)","a. Membangun fasilitas produksi baru.
+b. Memahami pelanggan dan ketidakpastian rantai pasok.
+c. Mengimplementasikan sistem ERP baru.
+d. Merestrukturisasi tim penjualan.
+e. Menurunkan harga semua produk.","b"
+"Bagaimana peningkatan variasi produk yang dibutuhkan pelanggan mempengaruhi 'implied demand uncertainty' (ketidakpastian permintaan implisit)? (Chapter 2)","a. Menurunkannya, karena pelanggan punya lebih banyak pilihan.
+b. Tidak ada efek sama sekali.
+c. Meningkatkannya, karena permintaan per produk menjadi lebih sulit diprediksi.
+d. Hanya mempengaruhinya jika harga juga berubah.
+e. Membuatnya menjadi stabil dan dapat diprediksi.","c"
+"Manakah dari berikut ini yang merupakan kemampuan utama dari rantai pasok yang responsif (responsive)? (Chapter 2)","a. Menyuplai permintaan dengan biaya serendah mungkin.
+b. Mempertahankan utilisasi kapasitas yang tinggi.
+c. Menanggapi berbagai kuantitas permintaan dan memenuhi waktu tunggu yang singkat.
+d. Menggunakan moda transportasi yang paling lambat dan murah.
+e. Memiliki tingkat persediaan yang sangat rendah.","c"
+"Tujuan utama dari rantai pasok yang efisien (efficient) adalah... (Chapter 2)","a. Membangun produk yang sangat inovatif.
+b. Menyuplai permintaan dengan biaya serendah mungkin.
+c. Menangani berbagai macam variasi produk.
+d. Memiliki tingkat layanan pelanggan tertinggi.
+e. Menawarkan waktu tunggu (lead time) terpendek.","b"
+"Untuk berada dalam 'zona strategic fit', rantai pasok yang menghadapi ketidakpastian permintaan implisit yang rendah seharusnya... (Chapter 2)","a. Sangat responsif.
+b. Sangat efisien.
+c. Memiliki persediaan yang sangat tinggi.
+d. Memiliki kapasitas fleksibel yang sangat besar.
+e. Menggunakan transportasi udara yang mahal.","b"
+"Mengapa strategi 'rantai pasok yang disesuaikan' (tailored supply chain) penting bagi banyak perusahaan? (Chapter 2)","a. Untuk menyederhanakan operasi dengan hanya menggunakan satu jenis pemasok.
+b. Karena mereka harus melayani berbagai segmen pelanggan dengan beragam produk melalui berbagai saluran.
+c. Untuk mengurangi biaya pemasaran secara drastis.
+d. Untuk mematuhi peraturan pemerintah.
+e. Untuk fokus hanya pada satu segmen pelanggan.","b"
+"Untuk produk yang berada pada tahap awal siklus hidupnya, karakteristik rantai pasok mana yang paling penting? (Chapter 2)","a. Efisiensi.
+b. Biaya rendah.
+c. Stabilitas.
+d. Responsivitas (daya tanggap).
+e. Utilisasi tinggi.","d"
+"Apa tujuan utama dari 'lingkup strategis antarperusahaan' (intercompany scope of strategic fit)? (Chapter 2)","a. Setiap perusahaan memaksimalkan keuntungannya sendiri.
+b. Setiap fungsi di dalam perusahaan meminimalkan biayanya sendiri.
+c. Menyelaraskan strategi di semua tahap rantai pasok untuk memaksimalkan surplus rantai pasok total.
+d. Mengalahkan pesaing dengan cara apapun.
+e. Mengurangi jumlah pemasok menjadi satu saja.","c"
+"Menurut model Fisher, produk dengan ketidakpastian permintaan implisit yang tinggi biasanya memiliki... (Chapter 2)","a. Margin produk yang rendah dan tingkat stockout yang rendah.
+b. Peramalan yang sangat akurat dan markdown yang rendah.
+c. Margin produk yang tinggi dan tingkat stockout yang tinggi.
+d. Pesaing langsung yang banyak dan margin yang rendah.
+e. Siklus hidup produk yang panjang dan permintaan stabil.","c"
+"'Cost-responsiveness efficient frontier' merepresentasikan... (Chapter 2)","a. Keuntungan maksimum yang bisa dicapai perusahaan.
+b. Biaya terendah yang mungkin untuk tingkat responsivitas tertentu.
+c. Jumlah persediaan yang ideal untuk dipegang.
+d. Waktu pengiriman tercepat yang mungkin dicapai.
+e. Jumlah fasilitas yang optimal.","b"
+"Manakah dari berikut ini yang BUKAN merupakan tantangan dalam mencapai dan mempertahankan 'strategic fit'? (Chapter 2)","a. Peningkatan variasi produk dan siklus hidup yang memendek.
+b. Globalisasi dan peningkatan ketidakpastian.
+c. Permintaan pelanggan yang stabil dan dapat diprediksi.
+d. Fragmentasi kepemilikan rantai pasok.
+e. Perubahan teknologi dan lingkungan bisnis.","c"
+"Dalam diagram rantai nilai (value chain), fungsi mana yang bertanggung jawab untuk menghasilkan permintaan dengan mempublikasikan prioritas pelanggan? (Chapter 2)","a. Operasi (Operations).
+b. Distribusi (Distribution).
+c. Pemasaran dan Penjualan (Marketing and Sales).
+d. Pengembangan Produk Baru (New Product Development).
+e. Layanan (Service).","c"
+"'Lingkup strategis intrafungsional' (intrafunctional scope) bertujuan untuk... (Chapter 2)","a. Menyelaraskan semua operasi dalam satu fungsi (misalnya, semua bagian logistik) untuk meminimalkan total biaya fungsional.
+b. Menyelaraskan semua fungsi yang berbeda dalam perusahaan (misalnya, pemasaran dan operasi).
+c. Menyelaraskan strategi dengan perusahaan pemasok dan pelanggan.
+d. Meminimalkan biaya dari satu operasi tunggal, seperti satu pengiriman truk.
+e. Memaksimalkan pendapatan dari satu fungsi, seperti penjualan.","a"
+"Strategi manufaktur untuk rantai pasok yang efisien biasanya berfokus pada... (Chapter 2)","a. Menjaga fleksibilitas kapasitas untuk menyangga ketidakpastian.
+b. Biaya yang lebih rendah melalui utilisasi yang tinggi.
+c. Menciptakan modularitas untuk penundaan diferensiasi produk.
+d. Menggunakan pemasok berdasarkan kecepatan dan fleksibilitas.
+e. Memproduksi dalam batch kecil.","b"
+"Strategi persediaan untuk rantai pasok yang responsif biasanya... (Chapter 2)","a. Meminimalkan persediaan untuk menekan biaya.
+b. Menjaga persediaan penyangga (buffer inventory) untuk menghadapi ketidakpastian permintaan/pasokan.
+c. Menghilangkan persediaan sama sekali.
+d. Hanya memesan sekali di awal musim.
+e. Menggunakan satu pusat distribusi terpusat.","b"
+"'Lingkup strategis tangkas antarperusahaan' (agile intercompany scope) mengacu pada... (Chapter 2)","a. Memiliki kontrak jangka panjang yang kaku dengan satu pemasok.
+b. Kemampuan perusahaan untuk mencapai 'strategic fit' ketika bermitra dengan tahapan rantai pasok yang berubah seiring waktu.
+c. Fokus hanya pada ketangkasan proses internal perusahaan.
+d. Menghindari semua bentuk kemitraan eksternal.
+e. Menggunakan perangkat lunak yang sama di seluruh rantai pasok.","b"
+"Menurut kasus Blockbuster, Netflix memperoleh keunggulan kompetitif atas Blockbuster dengan cara... (Chapter 2)","a. Membuka lebih banyak toko fisik di lokasi premium.
+b. Menawarkan variasi judul film yang jauh lebih banyak dan menghilangkan biaya keterlambatan (late fees).
+c. Menjual kaset VHS dengan harga lebih murah.
+d. Fokus hanya pada film-film rilisan terbaru.
+e. Memberikan layanan pengiriman di hari yang sama.","b"
 "Menurut buku ini, apa saja enam pendorong (drivers) kinerja rantai pasok? (Chapter 3)","a. Pemasaran, Keuangan, Sumber Daya Manusia, IT, Operasi, dan Penjualan.
 b. Fasilitas, Persediaan, Transportasi, Informasi, Sumber (Sourcing), dan Harga (Pricing).
 c. Kualitas, Kuantitas, Waktu, Biaya, Fleksibilitas, dan Inovasi.
@@ -49,6 +250,107 @@ b. T = I x D
 c. I = D / T
 d. T = D / I
 e. I = D x T","e"
+Pertanyaan,Pilihan Ganda,Jawaban
+"Manakah dari berikut ini yang merupakan tiga pendorong logistik (logistical drivers) dari kinerja rantai pasok? (Chapter 3)","a. Informasi, Sumber (Sourcing), dan Harga (Pricing).
+b. Fasilitas, Persediaan, dan Transportasi.
+c. Pemasaran, Keuangan, dan Operasi.
+d. Produsen, Distributor, dan Pengecer.
+e. Kualitas, Kecepatan, dan Biaya.","b"
+"Manakah dari berikut ini yang merupakan tiga pendorong lintas fungsi (cross-functional drivers) dari kinerja rantai pasok? (Chapter 3)","a. Fasilitas, Persediaan, dan Transportasi.
+b. Produksi, Pergudangan, dan Pengiriman.
+c. Informasi, Sumber (Sourcing), dan Harga (Pricing).
+d. Strategi, Perencanaan, dan Operasi.
+e. Pemasok, Pelanggan, dan Karyawan.","c"
+"Return on Assets (ROA) adalah hasil perkalian dari dua rasio keuangan. Apa saja kedua rasio tersebut? (Chapter 3)","a. Margin Laba (Profit Margin) dan Perputaran Aset (Asset Turnover).
+b. Return on Equity (ROE) dan Perputaran Persediaan (Inventory Turnover).
+c. Margin Laba (Profit Margin) dan Siklus Konversi Kas (Cash-to-Cash Cycle).
+d. Perputaran Aset (Asset Turnover) dan Perputaran Piutang (Accounts Receivable Turnover).
+e. Harga Pokok Penjualan (COGS) dan Laba Kotor.","a"
+"Apa yang diukur oleh metrik keuangan 'Siklus Konversi Kas' (Cash-to-Cash Cycle)? (Chapter 3)","a. Waktu rata-rata yang dibutuhkan untuk menjual seluruh persediaan.
+b. Waktu rata-rata dari saat kas dikeluarkan untuk biaya hingga kembali sebagai pendapatan yang terkumpul.
+c. Waktu rata-rata yang dibutuhkan pelanggan untuk membayar tagihan.
+d. Waktu rata-rata perusahaan membayar pemasoknya.
+e. Keuntungan total yang dihasilkan dari penjualan tunai.","b"
+"Bagaimana peningkatan jumlah fasilitas (misalnya, gudang) biasanya mempengaruhi biaya persediaan dan biaya transportasi? (Chapter 3)","a. Meningkatkan biaya persediaan dan meningkatkan biaya transportasi.
+b. Menurunkan biaya persediaan dan menurunkan biaya transportasi.
+c. Meningkatkan biaya persediaan tetapi menurunkan biaya transportasi (hingga titik tertentu).
+d. Menurunkan biaya persediaan tetapi meningkatkan biaya transportasi.
+e. Tidak mempengaruhi kedua biaya tersebut.","c"
+"Menurut Hukum Little (Little's Law) yang dinyatakan sebagai I = D x T, jika sebuah gudang memiliki persediaan (I) sebanyak 50,000 unit dan throughput (D) adalah 5,000 unit per hari, berapa waktu alir (T) rata-rata? (Chapter 3)","a. 10 hari.
+b. 0.1 hari.
+c. 250,000,000 hari.
+d. 45,000 hari.
+e. 100 hari.","a"
+"Informasi dianggap sebagai pendorong kinerja terbesar karena... (Chapter 3)","a. Memerlukan investasi teknologi yang paling mahal.
+b. Merupakan satu-satunya pendorong yang dapat di-outsource.
+c. Secara langsung mempengaruhi setiap pendorong lainnya (fasilitas, persediaan, transportasi, dll.).
+d. Paling mudah untuk diukur dan dikelola.
+e. Menghilangkan kebutuhan akan persediaan.","c"
+"Manakah dari berikut ini yang merupakan contoh dari 'persediaan pengaman' (safety inventory)? (Chapter 3)","a. Persediaan yang dibeli dalam jumlah besar untuk mendapatkan diskon.
+b. Persediaan yang dipegang untuk mengantisipasi permintaan musiman yang dapat diprediksi.
+c. Persediaan yang dipegang untuk berjaga-jaga jika permintaan aktual melebihi ramalan.
+d. Persediaan rata-rata yang digunakan untuk memenuhi permintaan antar pengiriman.
+e. Persediaan yang sedang dalam proses pengiriman.","c"
+"Metrik fasilitas 'utilisasi' (utilization) mengukur... (Chapter 3)","a. Jumlah maksimum yang dapat diproses oleh sebuah fasilitas.
+b. Biaya rata-rata untuk memproduksi satu unit output.
+c. Waktu yang diperlukan untuk memproses satu unit jika tidak ada penundaan sama sekali.
+d. Fraksi dari kapasitas yang sedang digunakan saat ini di fasilitas tersebut.
+e. Jumlah produk yang hilang karena cacat.","d"
+"Tujuan utama dari keputusan 'sumber' (sourcing) dalam rantai pasok adalah... (Chapter 3)","a. Selalu memilih pemasok dengan harga penawaran terendah.
+b. Hanya menggunakan pemasok lokal untuk mengurangi waktu pengiriman.
+c. Meningkatkan total surplus rantai pasok yang dapat dibagi.
+d. Memiliki sebanyak mungkin pemasok untuk mengurangi risiko.
+e. Mengintegrasikan semua aktivitas secara vertikal (melakukannya sendiri).","c"
+"Bagaimana 'harga' (pricing) dapat digunakan sebagai pendorong untuk menyeimbangkan penawaran dan permintaan? (Chapter 3)","a. Dengan menjaga harga tetap konstan sepanjang waktu.
+b. Dengan menggunakan diskon jangka pendek untuk menghabiskan kelebihan pasokan atau menggeser permintaan dari periode puncak.
+c. Dengan selalu menetapkan harga di atas harga pesaing.
+d. Dengan menetapkan harga berdasarkan biaya produksi saja.
+e. Dengan membiarkan pelanggan menentukan harga mereka sendiri.","b"
+"Manakah dari berikut ini yang BUKAN merupakan komponen dari biaya penyimpanan persediaan (inventory holding cost)? (Chapter 3)","a. Biaya modal (Cost of capital).
+b. Biaya keusangan (Obsolescence cost).
+c. Biaya penanganan (Handling cost).
+d. Biaya pemesanan tetap (Fixed ordering cost).
+e. Biaya hunian (Occupancy cost).","d"
+"Sebuah kebijakan 'push' dalam sistem informasi rantai pasok terutama bergantung pada... (Chapter 3)","a. Pesanan pelanggan real-time.
+b. Tingkat persediaan saat ini.
+c. Ramalan (forecasts) untuk membangun jadwal produksi utama.
+d. Sinyal dari pemasok.
+e. Biaya transportasi.","c"
+"Keputusan paling signifikan dalam 'sumber' (sourcing) adalah... (Chapter 3)","a. Apakah akan melakukan suatu tugas secara internal (in-house) atau mengalihdayakannya (outsource) ke pihak ketiga.
+b. Berapa banyak diskon yang harus dinegosiasikan.
+c. Pemasok mana yang lokasinya paling dekat.
+d. Apakah akan membayar di muka atau secara kredit.
+e. Berapa banyak pemasok yang harus digunakan untuk satu komponen.","a"
+"Perbedaan antara strategi harga 'Everyday Low Pricing' (EDLP) dan 'High-Low Pricing' adalah... (Chapter 3)","a. EDLP digunakan untuk produk mewah, High-Low untuk produk murah.
+b. EDLP menghasilkan permintaan yang relatif stabil, sedangkan High-Low menghasilkan puncak permintaan selama periode diskon.
+c. EDLP hanya digunakan oleh toko online, High-Low oleh toko fisik.
+d. EDLP memiliki margin yang lebih tinggi daripada High-Low.
+e. EDLP memerlukan lebih banyak iklan daripada High-Low.","b"
+"Metrik inventaris 'perputaran persediaan' (inventory turns) yang tinggi menunjukkan bahwa... (Chapter 3)","a. Perusahaan menahan terlalu banyak persediaan.
+b. Perusahaan menjual persediaannya dengan relatif cepat.
+c. Biaya penyimpanan persediaan sangat tinggi.
+d. Penjualan perusahaan sedang menurun.
+e. Perusahaan memesan dalam jumlah yang sangat besar.","b"
+"Metrik transportasi 'biaya transportasi masuk rata-rata' (average inbound transportation cost) biasanya termasuk dalam kategori biaya apa di laporan keuangan? (Chapter 3)","a. Beban Penjualan, Umum, dan Administrasi (SG&A).
+b. Harga Pokok Penjualan (Cost of Goods Sold - COGS).
+c. Aset Tetap (Property, Plant, and Equipment - PP&E).
+d. Piutang Usaha (Accounts Receivable).
+e. Pendapatan (Revenue).","b"
+"Metrik informasi 'kesalahan peramalan' (forecast error) mengukur... (Chapter 3)","a. Komponen sistematis dari permintaan.
+b. Perbedaan antara ramalan dan permintaan aktual.
+c. Tren pertumbuhan permintaan.
+d. Sejauh mana permintaan bersifat musiman.
+e. Jumlah total unit yang diramalkan.","b"
+"Metrik sumber 'hari hutang usaha' (days payable outstanding) mengukur... (Chapter 3)","a. Jumlah hari antara saat penjualan dilakukan dan saat kas diterima.
+b. Jumlah hari rata-rata persediaan disimpan.
+c. Jumlah hari antara saat pemasok melakukan tugas dan saat pemasok dibayar.
+d. Waktu tunggu rata-rata dari pemasok.
+e. Jumlah hari di mana perusahaan kehabisan stok.","c"
+"Apa itu 'persediaan musiman' (seasonal inventory)? (Chapter 3)","a. Persediaan yang dipegang untuk berjaga-jaga terhadap ketidakpastian permintaan.
+b. Persediaan yang dibangun untuk mengantisipasi variabilitas permintaan musiman yang dapat diprediksi.
+c. Persediaan yang ada karena pembelian dalam lot besar.
+d. Persediaan yang sudah usang dan tidak dapat dijual.
+e. Persediaan yang dimiliki oleh pemasok.","b"
 "Kinerja jaringan distribusi dievaluasi berdasarkan dua dimensi utama. Apa saja kedua dimensi tersebut? (Chapter 4)","a. Jumlah gudang dan kecepatan pengiriman.
 b. Biaya persediaan dan biaya fasilitas.
 c. Nilai yang diberikan kepada pelanggan dan biaya untuk memenuhi kebutuhan pelanggan.
@@ -64,3 +366,104 @@ b. Meningkatkan biaya transportasi dan memperlambat waktu respons.
 c. Menurunkan biaya transportasi tetapi memperlambat waktu respons.
 d. Meningkatkan biaya transportasi tetapi mempercepat waktu respons.
 e. Tidak mempengaruhi keduanya secara signifikan.","b"
+Pertanyaan,Pilihan Ganda,Jawaban
+"Apa yang dimaksud dengan 'distribusi' dalam rantai pasok? (Chapter 4)","a. Proses manufaktur produk dari bahan baku.
+b. Langkah-langkah yang diambil untuk memindahkan dan menyimpan produk dari tahap pemasok ke tahap pelanggan.
+c. Aktivitas pemasaran untuk mempromosikan produk.
+d. Proses pembelian bahan baku dari pemasok.
+e. Peramalan permintaan pelanggan untuk musim mendatang.","b"
+"Kinerja jaringan distribusi dievaluasi berdasarkan dua dimensi utama. Apa saja kedua dimensi tersebut? (Chapter 4)","a. Kecepatan pengiriman dan biaya bahan bakar.
+b. Jumlah pemasok dan jumlah pelanggan.
+c. Nilai yang diberikan kepada pelanggan dan biaya untuk memenuhi kebutuhan pelanggan.
+d. Kapasitas gudang dan jumlah armada truk.
+e. Kualitas produk dan harga produk.","c"
+"Bagaimana peningkatan jumlah fasilitas (misalnya, gudang) dalam rantai pasok biasanya mempengaruhi biaya persediaan dan waktu respons? (Chapter 4)","a. Menurunkan biaya persediaan dan memperlambat waktu respons.
+b. Meningkatkan biaya persediaan dan mempercepat waktu respons.
+c. Menurunkan biaya persediaan dan mempercepat waktu respons.
+d. Meningkatkan biaya persediaan dan memperlambat waktu respons.
+e. Tidak ada pengaruh pada keduanya.","b"
+"Apa kerugian utama dari jaringan 'manufacturer storage with direct shipping' (juga dikenal sebagai drop-shipping)? (Chapter 4)","a. Biaya persediaan yang sangat tinggi.
+b. Variasi produk yang dapat ditawarkan sangat terbatas.
+c. Biaya transportasi yang tinggi dan waktu respons yang lama bagi pelanggan.
+d. Memerlukan banyak fasilitas gudang perantara.
+e. Sulit untuk mengelola informasi pesanan.","c"
+"Apa perbedaan utama antara 'in-transit merge' dan 'drop-shipping' murni? (Chapter 4)","a. 'In-transit merge' hanya digunakan untuk pengiriman internasional.
+b. 'In-transit merge' menggabungkan beberapa bagian pesanan dari lokasi berbeda menjadi satu pengiriman tunggal ke pelanggan.
+c. 'Drop-shipping' selalu lebih cepat daripada 'in-transit merge'.
+d. 'In-transit merge' memerlukan biaya persediaan yang lebih tinggi.
+e. 'Drop-shipping' menggunakan kurir, sedangkan 'in-transit merge' menggunakan armada sendiri.","b"
+"Dibandingkan dengan 'manufacturer storage', jaringan 'distributor storage with carrier delivery' biasanya memiliki... (Chapter 4)","a. Biaya persediaan yang lebih rendah.
+b. Waktu respons yang lebih lambat.
+c. Variasi produk yang lebih banyak.
+d. Waktu respons yang lebih cepat.
+e. Biaya fasilitas yang lebih rendah.","d"
+"Jaringan 'distributor storage with last-mile delivery' (pengiriman jarak akhir) memiliki biaya transportasi tertinggi karena... (Chapter 4)","a. Menggunakan pesawat sebagai moda transportasi utama.
+b. Skala ekonomis yang minimal saat mengirimkan pesanan kecil ke setiap pelanggan individu.
+c. Jarak yang ditempuh selalu paling jauh.
+d. Memerlukan pengemudi dengan keahlian khusus.
+e. Adanya pajak tambahan untuk pengiriman ke rumah.","b"
+"Apa keuntungan utama dari jaringan 'manufacturer or distributor storage with customer pickup' (pengambilan oleh pelanggan)? (Chapter 4)","a. Memberikan waktu respons tercepat di antara semua opsi.
+b. Tidak memerlukan infrastruktur teknologi informasi sama sekali.
+c. Dapat menurunkan biaya pengiriman karena agregasi pengiriman ke beberapa titik pengambilan terpusat.
+d. Pengalaman pelanggan selalu lebih baik karena tidak perlu menunggu di rumah.
+e. Menghilangkan semua biaya penanganan barang.","c"
+"Jaringan 'retail storage with customer pickup' (penyimpanan di toko ritel) paling cocok untuk jenis produk apa? (Chapter 4)","a. Produk dengan permintaan rendah dan tidak pasti.
+b. Produk yang sangat mahal dan bernilai tinggi.
+c. Produk yang dibuat khusus sesuai pesanan pelanggan.
+d. Produk yang bergerak cepat (fast-moving items) atau produk yang pelanggannya sangat menghargai respons cepat.
+e. Produk digital yang dapat diunduh.","d"
+"Bagaimana penjualan online mempengaruhi variasi produk yang dapat ditawarkan oleh sebuah perusahaan dibandingkan dengan toko fisik? (Chapter 4)","a. Penjualan online biasanya mengurangi variasi produk yang ditawarkan.
+b. Penjualan online memudahkan perusahaan untuk menawarkan pilihan produk yang jauh lebih besar.
+c. Tidak ada perbedaan dalam variasi produk yang bisa ditawarkan.
+d. Penjualan online hanya dapat menawarkan produk digital.
+e. Variasi produk dalam penjualan online dibatasi oleh kapasitas server.","b"
+"Untuk produk fisik, mengapa penjualan online cenderung meningkatkan total biaya transportasi rantai pasok? (Chapter 4)","a. Karena biaya bahan bakar untuk e-commerce lebih mahal.
+b. Karena biaya transportasi masuk (inbound) ke gudang menjadi lebih mahal.
+c. Karena peningkatan biaya transportasi keluar (outbound) untuk mengirim paket-paket kecil ke setiap pelanggan individu.
+d. Karena harus selalu menggunakan moda transportasi udara yang mahal.
+e. Karena adanya pajak e-commerce pada transportasi.","c"
+"Menurut analisis buku, mengapa model bisnis grosir online (seperti Peapod) menghadapi tantangan biaya yang lebih besar daripada penjual buku online (seperti Amazon)? (Chapter 4)","a. Karena buku lebih ringan daripada bahan makanan.
+b. Karena grosir online memiliki biaya penjemputan pesanan (picking) dan transportasi yang jauh lebih tinggi, sementara manfaat agregasi persediaan tidak sebesar pada buku.
+c. Karena orang lebih suka membeli buku secara online daripada bahan makanan.
+d. Karena margin keuntungan pada bahan makanan lebih rendah.
+e. Karena situs web untuk grosir online lebih mahal untuk dibuat.","b"
+"Manakah dari berikut ini yang merupakan contoh 'milk run' dalam jaringan distribusi? (Chapter 4)","a. Sebuah truk mengirimkan produk dari satu pemasok ke satu toko.
+b. Sebuah truk mengambil barang dari beberapa pemasok untuk dikirim ke satu pabrik.
+c. Sebuah truk mengirimkan barang dari beberapa pemasok ke beberapa toko.
+d. Setiap pemasok mengirimkan truknya sendiri ke setiap toko.
+e. Pengiriman paket kecil melalui kurir udara.","b"
+"Menurut perbandingan kinerja jaringan distribusi (Tabel 4-7), jaringan manakah yang umumnya menawarkan 'variasi produk' (product variety) terbanyak? (Chapter 4)","a. Retail Storage with Customer Pickup.
+b. Manufacturer Storage with Direct Shipping.
+c. Distributor Storage with Last-Mile Delivery.
+d. Distributor Storage with Package Carrier Delivery.
+e. Semuanya menawarkan variasi yang sama.","b"
+"Menurut perbandingan kinerja jaringan distribusi (Tabel 4-7), jaringan manakah yang umumnya memiliki 'biaya fasilitas dan penanganan' (facility and handling costs) tertinggi? (Chapter 4)","a. Manufacturer Storage with Direct Shipping.
+b. Retail Storage with Customer Pickup.
+c. Distributor Storage with Package Carrier Delivery.
+d. Manufacturer Storage with In-Transit Merge.
+e. Semua biayanya sama.","b"
+"Jaringan distribusi mana yang membutuhkan investasi infrastruktur informasi paling signifikan untuk dapat beroperasi dengan efektif? (Chapter 4)","a. Retail Storage with Customer Pickup (untuk pembelian di toko).
+b. Manufacturer Storage with Direct Shipping (drop-shipping).
+c. Pengiriman langsung dari pemasok ke toko tanpa perantara.
+d. Semua jaringan membutuhkan tingkat investasi yang sama.
+e. Tidak ada jaringan yang membutuhkan investasi IT signifikan.","b"
+"Mengapa perusahaan seperti Amazon yang awalnya hanya memiliki beberapa gudang, kemudian membangun lebih banyak gudang seiring pertumbuhannya? (Chapter 4)","a. Untuk meningkatkan biaya persediaan mereka.
+b. Untuk lebih mendekati pelanggan, sehingga mengurangi biaya transportasi dan meningkatkan waktu respons.
+c. Karena peraturan pemerintah mengharuskannya.
+d. Untuk menyimpan lebih banyak produk yang tidak laku.
+e. Untuk menyederhanakan manajemen rantai pasoknya.","b"
+"Apa itu 'temporal aggregation' dalam konteks desain transportasi? (Chapter 4)","a. Menggabungkan pesanan dari berbagai lokasi geografis.
+b. Menggabungkan pesanan dari berbagai pelanggan dalam satu pengiriman.
+c. Menggabungkan pesanan dari berbagai periode waktu menjadi satu pengiriman yang lebih besar.
+d. Menggunakan moda transportasi tercepat yang tersedia.
+e. Mengirim setiap pesanan segera setelah diterima.","c"
+"Mengapa 'adaptability' (kemampuan beradaptasi) penting dalam desain jaringan distribusi? (Chapter 4)","a. Karena biaya transportasi selalu konstan.
+b. Untuk memastikan perusahaan selalu menggunakan pemasok yang sama.
+c. Karena teknologi dan lingkungan bisnis yang berubah dapat membuat jaringan yang ada menjadi tidak efektif, seperti yang terjadi pada Blockbuster.
+d. Untuk meminimalkan jumlah produk yang ditawarkan.
+e. Untuk menjaga agar struktur kepemilikan jaringan tidak pernah berubah.","c"
+"Menurut kasus Blue Nile, bagaimana model bisnis online-nya menciptakan keunggulan dibandingkan toko perhiasan tradisional? (Chapter 4)","a. Dengan membuka banyak toko fisik kecil.
+b. Dengan membebankan markup yang lebih tinggi pada berlian.
+c. Dengan mengagregasi persediaan secara terpusat, sehingga mengurangi biaya persediaan dan memungkinkan harga yang lebih rendah.
+d. Dengan menawarkan waktu pengiriman yang lebih lambat.
+e. Dengan hanya menjual berlian berkualitas rendah.","c"
