@@ -139,7 +139,8 @@ def translate_questions_smart(questions, target_lang):
                     if attempt < max_retries - 1:
                         st.warning(f"⚠️ Translation attempt {attempt + 1} failed: {str(e)[:100]}. Retrying...")
                         time.sleep(1)
-                        translator = Translator()  # Create new translator instance
+                        # Get a fresh translator instance from cache
+                        translator = get_translator()
                     else:
                         st.error(f"❌ Translation failed after {max_retries} attempts: {str(e)[:100]}")
                         st.info("💡 Tip: The Google Translate API can be unstable. Try refreshing or wait a moment.")
@@ -249,8 +250,13 @@ if 'session_id' not in st.session_state:
     # On first ever run, set an initial value to trigger a fetch from browser
     st.session_state.session_id = localS.getItem('session_id')
 
-# Now, on every run, sync the browser's state to match our session_state
-localS.setItem('session_id', st.session_state.session_id)
+# Only sync to browser when session_id actually changes (not on every rerun)
+if 'last_synced_session_id' not in st.session_state:
+    st.session_state.last_synced_session_id = None
+
+if st.session_state.session_id != st.session_state.last_synced_session_id:
+    localS.setItem('session_id', st.session_state.session_id)
+    st.session_state.last_synced_session_id = st.session_state.session_id
 
 # --- Helper Functions for Saving and Loading ---
 def generate_save_code(user_name=None):
@@ -276,7 +282,7 @@ def generate_save_code(user_name=None):
 def check_code_exists(code):
     """Check if a save code already exists in Firestore."""
     try:
-        db = firestore.Client()
+        # Use the cached db connection instead of creating a new one
         doc_ref = db.collection('quiz_sessions').document(code)
         doc = doc_ref.get()
         return doc.exists
